@@ -113,6 +113,185 @@ const pokemonList = [
           item: "Moon Stone"
         }
       ]
+    },
+    {
+      name: "Charizard",
+      types: ["fire", "flying"],
+      stats: {
+        hp: 78,
+        attack: 84,
+        defense: 78,
+        speed: 100,
+        spAtk: 109,
+        spDef: 85
+      },
+      description: "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.",
+      height: "1.7 m",
+      weight: "90.5 kg",
+      abilities: ["Blaze", "Solar Power"],
+      evolutions: []
+    },
+    {
+      name: "Blastoise",
+      types: ["water"],
+      stats: {
+        hp: 79,
+        attack: 83,
+        defense: 100,
+        speed: 78,
+        spAtk: 85,
+        spDef: 105
+      },
+      description: "It deliberately makes itself heavy to withstand the recoil of the water jets it fires.",
+      height: "1.6 m",
+      weight: "85.5 kg",
+      abilities: ["Torrent", "Rain Dish"],
+      evolutions: []
+    },
+    {
+      name: "Snorlax",
+      types: ["normal"],
+      stats: {
+        hp: 160,
+        attack: 110,
+        defense: 65,
+        speed: 30,
+        spAtk: 65,
+        spDef: 110
+      },
+      description: "Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.",
+      height: "2.1 m",
+      weight: "460 kg",
+      abilities: ["Immunity", "Thick Fat", "Gluttony"],
+      evolutions: []
+    },
+    {
+      name: "Dragonite",
+      types: ["dragon", "flying"],
+      stats: {
+        hp: 91,
+        attack: 134,
+        defense: 95,
+        speed: 80,
+        spAtk: 100,
+        spDef: 100
+      },
+      description: "An extremely rare Pokémon that is said to fly faster than the speed of sound.",
+      height: "2.2 m",
+      weight: "210 kg",
+      abilities: ["Inner Focus", "Multiscale"],
+      evolutions: []
+    },
+    {
+      name: "Tyranitar",
+      types: ["rock", "dark"],
+      stats: {
+        hp: 100,
+        attack: 134,
+        defense: 110,
+        speed: 61,
+        spAtk: 95,
+        spDef: 100
+      },
+      description: "If it rampages, it knocks down mountains and buries rivers. Maps must be redrawn afterward.",
+      height: "2.0 m",
+      weight: "202 kg",
+      abilities: ["Sand Stream", "Unnerve"],
+      evolutions: []
+    },
+    {
+      name: "Gyarados",
+      types: ["water", "flying"],
+      stats: {
+        hp: 95,
+        attack: 125,
+        defense: 79,
+        speed: 81,
+        spAtk: 60,
+        spDef: 100
+      },
+      description: "Rarely seen in the wild. Huge and vicious, it is capable of destroying entire cities in a rage.",
+      height: "6.5 m",
+      weight: "235 kg",
+      abilities: ["Intimidate", "Moxie"],
+      evolutions: []
+    },
+    {
+      name: "Metagross",
+      types: ["steel", "psychic"],
+      stats: {
+        hp: 80,
+        attack: 135,
+        defense: 130,
+        speed: 70,
+        spAtk: 95,
+        spDef: 90
+      },
+      description: "It uses its four brains to analyze complex calculations and defeat opponents in battle.",
+      height: "1.6 m",
+      weight: "550 kg",
+      abilities: ["Clear Body", "Light Metal"],
+      evolutions: []
+    },
+    {
+      name: "Aggron",
+      types: ["steel", "rock"],
+      stats: {
+        hp: 70,
+        attack: 110,
+        defense: 180,
+        speed: 50,
+        spAtk: 60,
+        spDef: 60
+      },
+      description: "It claims an entire mountain as its own. The more wounds it has, the more battles it's won.",
+      height: "2.1 m",
+      weight: "360 kg",
+      abilities: ["Sturdy", "Rock Head", "Heavy Metal"],
+      evolutions: []
+    },
+    {
+      name: "Haxorus",
+      types: ["dragon"],
+      stats: {
+        hp: 76,
+        attack: 147,
+        defense: 90,
+        speed: 97,
+        spAtk: 60,
+        spDef: 70
+      },
+      description: "Its resilient tusks are its pride and joy. It can cut through steel beams with them.",
+      height: "1.8 m",
+      weight: "105.5 kg",
+      abilities: ["Rivalry", "Mold Breaker", "Unnerve"],
+      evolutions: []
+    },
+    {
+      name: "Salamence",
+      types: ["dragon", "flying"],
+      stats: {
+        hp: 95,
+        attack: 135,
+        defense: 80,
+        speed: 100,
+        spAtk: 110,
+        spDef: 80
+      },
+      description: "It becomes uncontrollable if enraged. It destroys everything with its overwhelming power.",
+      height: "1.5 m",
+      weight: "102.6 kg",
+      abilities: ["Intimidate", "Moxie"],
+      evolutions: []
     }
   ];
   
+
+
+  for (let i = 0; i < pokemonList.length; i++) {
+    document.write(`<p>${pokemonList[i].name} - Height: ${pokemonList[i].height}`);
+    if (parseFloat(pokemonList[i].height) > 1) {
+      document.write(` - Wow, That's Big!`);
+    }
+    document.write(`</p>`);
+  }
