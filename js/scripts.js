@@ -1,3 +1,4 @@
+const pokemonRepository = (function () {
 const pokemonList = [
     {
       name: "Bulbasaur",
@@ -285,13 +286,47 @@ const pokemonList = [
       evolutions: []
     }
   ];
-  
 
-
-  for (let i = 0; i < pokemonList.length; i++) {
-    document.write(`<p>${pokemonList[i].name} - Height: ${pokemonList[i].height}`);
-    if (parseFloat(pokemonList[i].height) > 1) {
-      document.write(` - Wow, That's Big!`);
-    }
-    document.write(`</p>`);
+   // Define the getAll function
+   function getAll() {
+    return pokemonList;
   }
+
+  // Define the add function
+  function add(pokemon) {
+    const requiredKeys = ["name", "types", "stats", "height", "weight", "abilities", "description", "evolutions"];
+    const pokemonKeys = Object.keys(pokemon);
+  
+    if (
+      typeof pokemon === "object" && // Check if it's an object
+      requiredKeys.every(key => pokemonKeys.includes(key)) && // Ensure it has all required keys
+      pokemonKeys.length === requiredKeys.length // Ensure no extra keys are present
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      console.error("Invalid Pokémon object. Make sure it has all required properties and no extra properties.");
+    }
+  }
+
+  // Define the findByName function
+  function findByName(name) {
+    return pokemonList.filter(pokemon => pokemon.name.toLowerCase() === name.toLowerCase());
+  }
+
+  // Return an object with the same names for keys as values
+  return {
+    getAll: getAll,
+    add: add,
+    findByName: findByName
+  };
+})();
+
+// Loop through each Pokémon in the pokemonRepository and write the name and height to the document
+pokemonRepository.getAll().forEach(pokemon => {
+  document.write(`<p>${pokemon.name} - Height: ${pokemon.height}`);
+  if (parseFloat(pokemon.height) > 1) {
+    document.write(` - Wow, That's Big!`);
+  }
+  document.write(`</p>`);
+});
+
