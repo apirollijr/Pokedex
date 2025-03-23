@@ -22,7 +22,8 @@
 // 5. Modules (components)
 @use 'module/button';
 @use 'module/card';
-@use 'module/navbar';
+@use 'module/hero';
+@use 'module/type-filters';
 
 // 6. State
 @use 'state/active';

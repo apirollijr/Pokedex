@@ -1,8 +1,19 @@
-@use '../utils/variables' as utils;
+@use '../utils/variables' as vars;
 @use '../theme/colors' as theme;
+@use '../utils/mixins' as mixins;
 
-
+html,
 body {
     background-color: theme.$background-light;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
+main {
+  flex: 1;
+}
+
+  .container {
+    @include mixins.container;
+  }

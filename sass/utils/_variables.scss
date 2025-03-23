@@ -1,3 +1,16 @@
-$font-stack: 'Segoe UI', sans-serif;
-$border-radius: 12px;
-$container-width: 1100px;
+// Container Widths
+$container-max-width: 1100px;
+$container-padding: 1rem;
+
+// Breakpoints
+$container-breakpoints: (
+  small: 540px,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1200px
+);
+
+// Font Families
+$font-heading: 'Poppins', sans-serif;
+$font-body: 'Roboto', sans-serif;
+

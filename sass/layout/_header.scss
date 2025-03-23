@@ -1,0 +1,49 @@
+@use '../utils/variables' as vars;
+@use '../theme/colors' as theme;
+
+.site-header {
+    background-color: theme.$pokemon-yellow;
+    color: theme.$pokemon-blue;
+    padding: 20px 0;
+    border-bottom: 4px solid theme.$pokemon-blue;
+  
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  
+    nav {
+      display: flex;
+  
+      .nav-links {
+        display: flex;
+        gap: 20px;
+  
+        li {
+          list-style: none;
+        }
+  
+        a {
+          color: theme.$pokemon-blue;
+          font-size: 1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          transition: color 0.3s ease;
+          text-decoration: none;
+  
+          &:hover {
+            color: theme.$fire; 
+          }
+        }
+      }
+    }
+  }
+  

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokédex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -31,7 +32,8 @@
     </section>
 
     <!-- Type Filter Section -->
-    <section class="type-filters container">
+    <section class="type-filters">
+      <div class="container">
       <h3>Filter by Type</h3>
       <div class="types">
         <!-- Add more buttons as needed -->
@@ -40,10 +42,12 @@
         <button class="type-btn" data-type="grass">🌿 Grass</button>
         <button class="type-btn" data-type="electric">⚡ Electric</button>
       </div>
+      </div>
     </section>
 
     <!-- Featured Pokémon -->
-    <section class="featured-pokemon container">
+    <section class="featured-pokemon">
+      <div class="container">
       <h3>Featured Pokémon</h3>
       <div class="pokemon-grid">
         <!-- Pokémon cards go here -->
@@ -54,6 +58,7 @@
           <span class="type electric">Electric</span>
         </div>
         <!-- Add more cards dynamically with JS or static for now -->
+      </div>
       </div>
     </section>
   </main>

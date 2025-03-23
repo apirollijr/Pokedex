@@ -1,0 +1,25 @@
+@use 'variables' as vars;
+
+@mixin container {
+  width: 100%;
+  max-width: vars.$container-max-width;
+  margin: 0 auto;
+  padding-left: vars.$container-padding;
+  padding-right: vars.$container-padding;
+
+  @media (min-width: map-get(vars.$container-breakpoints, 'small')) {
+    max-width: map-get(vars.$container-breakpoints, 'small');
+  }
+
+  @media (min-width: map-get(vars.$container-breakpoints, 'medium')) {
+    max-width: map-get(vars.$container-breakpoints, 'medium');
+  }
+
+  @media (min-width: map-get(vars.$container-breakpoints, 'large')) {
+    max-width: map-get(vars.$container-breakpoints, 'large');
+  }
+
+  @media (min-width: map-get(vars.$container-breakpoints, 'xlarge')) {
+    max-width: map-get(vars.$container-breakpoints, 'xlarge');
+  }
+}
