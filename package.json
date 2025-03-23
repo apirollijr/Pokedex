@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "sass": "^1.86.0"
+  },
+  "scripts": {
+    "sass": "sass --load-path=node_modules sass/main.scss css/style.css"
+  }
+}
