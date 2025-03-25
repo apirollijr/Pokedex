@@ -46,10 +46,12 @@
     </section>
 
     <!-- Featured Pokémon -->
-    <section class="featured-pokemon">
+    <section class="featured-pokemon" id="featured-pokemon">
       <div class="container">
       <h3>Featured Pokémon</h3>
+      <ul class="pokemon-list"></ul>
       <div class="pokemon-grid">
+        
         <!-- Pokémon cards go here -->
         <div class="pokemon-card">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu">
@@ -68,5 +70,14 @@
       <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
     </div>
   </footer>
+  <div id="pokemon-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 class="modal-title"></h2>
+      <p class="modal-description"></p>
+      <p class="modal-stats"></p>
+    </div>
+  </div>
+  <script src="js/scripts.js"></script>
 </body>
 </html>

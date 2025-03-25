@@ -6,7 +6,7 @@ const pokemonRepository = (function () {
       stats: {
         hp: 45,
         attack: 49,
-        defense: 49,
+        defense: 49,  
         speed: 45,
         spAtk: 65,
         spDef: 65
@@ -91,199 +91,6 @@ const pokemonRepository = (function () {
           item: "Thunder Stone"
         }
       ]
-    },
-    {
-      name: "Jigglypuff",
-      types: ["normal", "fairy"],
-      stats: {
-        hp: 115,
-        attack: 45,
-        defense: 20,
-        speed: 20,
-        spAtk: 45,
-        spDef: 25
-      },
-      description: "When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep.",
-      height: "0.5 m",
-      weight: "5.5 kg",
-      abilities: ["Cute Charm", "Competitive", "Friend Guard"],
-      evolutions: [
-        {
-          to: "Wigglytuff",
-          method: "use_item",
-          item: "Moon Stone"
-        }
-      ]
-    },
-    {
-      name: "Charizard",
-      types: ["fire", "flying"],
-      stats: {
-        hp: 78,
-        attack: 84,
-        defense: 78,
-        speed: 100,
-        spAtk: 109,
-        spDef: 85
-      },
-      description: "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.",
-      height: "1.7 m",
-      weight: "90.5 kg",
-      abilities: ["Blaze", "Solar Power"],
-      evolutions: []
-    },
-    {
-      name: "Blastoise",
-      types: ["water"],
-      stats: {
-        hp: 79,
-        attack: 83,
-        defense: 100,
-        speed: 78,
-        spAtk: 85,
-        spDef: 105
-      },
-      description: "It deliberately makes itself heavy to withstand the recoil of the water jets it fires.",
-      height: "1.6 m",
-      weight: "85.5 kg",
-      abilities: ["Torrent", "Rain Dish"],
-      evolutions: []
-    },
-    {
-      name: "Snorlax",
-      types: ["normal"],
-      stats: {
-        hp: 160,
-        attack: 110,
-        defense: 65,
-        speed: 30,
-        spAtk: 65,
-        spDef: 110
-      },
-      description: "Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.",
-      height: "2.1 m",
-      weight: "460 kg",
-      abilities: ["Immunity", "Thick Fat", "Gluttony"],
-      evolutions: []
-    },
-    {
-      name: "Dragonite",
-      types: ["dragon", "flying"],
-      stats: {
-        hp: 91,
-        attack: 134,
-        defense: 95,
-        speed: 80,
-        spAtk: 100,
-        spDef: 100
-      },
-      description: "An extremely rare Pokémon that is said to fly faster than the speed of sound.",
-      height: "2.2 m",
-      weight: "210 kg",
-      abilities: ["Inner Focus", "Multiscale"],
-      evolutions: []
-    },
-    {
-      name: "Tyranitar",
-      types: ["rock", "dark"],
-      stats: {
-        hp: 100,
-        attack: 134,
-        defense: 110,
-        speed: 61,
-        spAtk: 95,
-        spDef: 100
-      },
-      description: "If it rampages, it knocks down mountains and buries rivers. Maps must be redrawn afterward.",
-      height: "2.0 m",
-      weight: "202 kg",
-      abilities: ["Sand Stream", "Unnerve"],
-      evolutions: []
-    },
-    {
-      name: "Gyarados",
-      types: ["water", "flying"],
-      stats: {
-        hp: 95,
-        attack: 125,
-        defense: 79,
-        speed: 81,
-        spAtk: 60,
-        spDef: 100
-      },
-      description: "Rarely seen in the wild. Huge and vicious, it is capable of destroying entire cities in a rage.",
-      height: "6.5 m",
-      weight: "235 kg",
-      abilities: ["Intimidate", "Moxie"],
-      evolutions: []
-    },
-    {
-      name: "Metagross",
-      types: ["steel", "psychic"],
-      stats: {
-        hp: 80,
-        attack: 135,
-        defense: 130,
-        speed: 70,
-        spAtk: 95,
-        spDef: 90
-      },
-      description: "It uses its four brains to analyze complex calculations and defeat opponents in battle.",
-      height: "1.6 m",
-      weight: "550 kg",
-      abilities: ["Clear Body", "Light Metal"],
-      evolutions: []
-    },
-    {
-      name: "Aggron",
-      types: ["steel", "rock"],
-      stats: {
-        hp: 70,
-        attack: 110,
-        defense: 180,
-        speed: 50,
-        spAtk: 60,
-        spDef: 60
-      },
-      description: "It claims an entire mountain as its own. The more wounds it has, the more battles it's won.",
-      height: "2.1 m",
-      weight: "360 kg",
-      abilities: ["Sturdy", "Rock Head", "Heavy Metal"],
-      evolutions: []
-    },
-    {
-      name: "Haxorus",
-      types: ["dragon"],
-      stats: {
-        hp: 76,
-        attack: 147,
-        defense: 90,
-        speed: 97,
-        spAtk: 60,
-        spDef: 70
-      },
-      description: "Its resilient tusks are its pride and joy. It can cut through steel beams with them.",
-      height: "1.8 m",
-      weight: "105.5 kg",
-      abilities: ["Rivalry", "Mold Breaker", "Unnerve"],
-      evolutions: []
-    },
-    {
-      name: "Salamence",
-      types: ["dragon", "flying"],
-      stats: {
-        hp: 95,
-        attack: 135,
-        defense: 80,
-        speed: 100,
-        spAtk: 110,
-        spDef: 80
-      },
-      description: "It becomes uncontrollable if enraged. It destroys everything with its overwhelming power.",
-      height: "1.5 m",
-      weight: "102.6 kg",
-      abilities: ["Intimidate", "Moxie"],
-      evolutions: []
     }
   ];
 
@@ -291,57 +98,50 @@ const pokemonRepository = (function () {
     return pokemonList;
   }
 
-  function add(pokemon) {
-    const requiredKeys = ["name", "types", "stats", "height", "weight", "abilities", "description", "evolutions"];
-    const pokemonKeys = Object.keys(pokemon);
-
-    if (
-      typeof pokemon === "object" &&
-      requiredKeys.every(key => pokemonKeys.includes(key)) &&
-      pokemonKeys.length === requiredKeys.length
-    ) {
-      pokemonList.push(pokemon);
-    } else {
-      console.error("Invalid Pokémon object.");
-    }
-  }
-
-  function findByName(name) {
-    return pokemonList.filter(pokemon => pokemon.name.toLowerCase() === name.toLowerCase());
-  }
-
   function showDetails(pokemon) {
-    console.log(pokemon);
-  }
+    const modal = document.getElementById('pokemon-modal');
+    const title = modal.querySelector('.modal-title');
+    const description = modal.querySelector('.modal-description');
+    const info = modal.querySelector('.modal-stats');
 
-  function addClickListener(button, pokemon) {
-    button.addEventListener('click', function () {
-      showDetails(pokemon);
-    });
+
+    title.textContent = pokemon.name;
+    description.textContent = pokemon.description;
+    info.textContent = `Height: ${pokemon.height}, Weight: ${pokemon.weight}, Types: ${pokemon.types.join(', ')}, Abilities: ${pokemon.abilities.join(', ')}`;
+
+    modal.classList.remove('hidden');
   }
 
   function addListItem(pokemon) {
-    const pokemonListElement = document.querySelector('.pokemon-list');
+    const list = document.querySelector('.pokemon-list');
     const listItem = document.createElement('li');
     const button = document.createElement('button');
 
     button.innerText = pokemon.name;
     button.classList.add('pokemon-button');
-
     listItem.appendChild(button);
-    pokemonListElement.appendChild(listItem);
+    list.appendChild(listItem);
 
-    addClickListener(button, pokemon);
+    button.addEventListener('click', function () {
+      showDetails(pokemon);
+    });
   }
 
   return {
-    getAll: getAll,
-    add: add,
-    findByName: findByName,
-    addListItem: addListItem
+    getAll,
+    addListItem
   };
 })();
 
-pokemonRepository.getAll().forEach(pokemon => {
-  pokemonRepository.addListItem(pokemon);
+document.addEventListener('DOMContentLoaded', () => {
+  pokemonRepository.getAll().forEach(pokemon => {
+    pokemonRepository.addListItem(pokemon);
+  });
+
+  const closeButton = document.querySelector('.close-button');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      document.getElementById('pokemon-modal').classList.add('hidden');
+    });
+  }
 });
