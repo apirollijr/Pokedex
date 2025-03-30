@@ -2,14 +2,14 @@
 @use '../utils/mixins' as mixins;
 
 .site-footer {
-  background-color: theme.$pokemon-yellow; // Same background as the header
-  color: theme.$pokemon-blue; // Same text color as the header
-  padding: 20px 0; // Same padding as the header
-  border-top: 4px solid theme.$pokemon-blue; // Add a border to match the header
+  background-color: theme.$pokemon-yellow; 
+  color: theme.$pokemon-blue; 
+  padding: 20px 0; 
+  border-top: 4px solid theme.$pokemon-blue; 
 
   .container {
-    @include mixins.container; // Use the same container mixin
-    text-align: center; // Center-align the content
+    @include mixins.container; 
+    text-align: center; 
   }
 
   p {
@@ -17,13 +17,13 @@
     margin: 0;
 
     a {
-      color: theme.$pokemon-blue; // Link color matches the header
+      color: theme.$pokemon-blue; 
       font-weight: bold;
       text-decoration: none;
       transition: color 0.3s ease;
 
       &:hover {
-        color: theme.$pokemon-red; // Highlight color on hover
+        color: theme.$pokemon-red; 
       }
     }
   }

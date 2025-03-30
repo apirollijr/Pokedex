@@ -150,12 +150,12 @@ const pokemonRepository = (function () {
 })();
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Dynamically create all cards from the list
+ 
   pokemonRepository.getAll().forEach((pokemon) => {
     pokemonRepository.addCardItem(pokemon);
   });
 
-  // Modal close button
+ 
   const closeButton = document.querySelector(".close-button");
   if (closeButton) {
     closeButton.addEventListener("click", () => {
