@@ -1,165 +1,122 @@
 const pokemonRepository = (function () {
-  const pokemonList = [
-    {
-      name: "Bulbasaur",
-      types: ["grass", "poison"],
-      stats: {
-        hp: 45,
-        attack: 49,
-        defense: 49,
-        speed: 45,
-        spAtk: 65,
-        spDef: 65,
-      },
-      description:
-        "For some time after its birth, it grows by gaining nourishment from the seed on its back.",
-      height: "0.7 m",
-      weight: "6.9 kg",
-      abilities: ["Chlorophyll", "Overgrow"],
-      evolutions: [{ to: "Ivysaur", method: "level_up", level: 16 }],
-    },
-    {
-      name: "Charmander",
-      types: ["fire"],
-      stats: {
-        hp: 39,
-        attack: 52,
-        defense: 43,
-        speed: 65,
-        spAtk: 60,
-        spDef: 50,
-      },
-      description:
-        "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.",
-      height: "0.6 m",
-      weight: "8.5 kg",
-      abilities: ["Blaze", "Solar Power"],
-      evolutions: [{ to: "Charmeleon", method: "level_up", level: 16 }],
-    },
-    {
-      name: "Squirtle",
-      types: ["water"],
-      stats: {
-        hp: 44,
-        attack: 48,
-        defense: 65,
-        speed: 43,
-        spAtk: 50,
-        spDef: 64,
-      },
-      description:
-        "After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.",
-      height: "0.5 m",
-      weight: "9.0 kg",
-      abilities: ["Torrent", "Rain Dish"],
-      evolutions: [{ to: "Wartortle", method: "level_up", level: 16 }],
-    },
-    {
-      name: "Pikachu",
-      types: ["electric"],
-      stats: {
-        hp: 35,
-        attack: 55,
-        defense: 40,
-        speed: 90,
-        spAtk: 50,
-        spDef: 50,
-      },
-      description:
-        "When several of these Pokémon gather, their electricity could build and cause lightning storms.",
-      height: "0.4 m",
-      weight: "6.0 kg",
-      abilities: ["Static", "Lightning Rod"],
-      evolutions: [{ to: "Raichu", method: "use_item", item: "Thunder Stone" }],
-    },
-  ];
+  const pokemonList = [];
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
+  function add(pokemon) {
+    if (typeof pokemon === 'object' && 'name' in pokemon && 'detailsUrl' in pokemon) {
+      pokemonList.push(pokemon);
+    } else {
+      console.error('Invalid Pokémon:', pokemon);
+    }
+  }
 
   function getAll() {
     return pokemonList;
   }
 
-  function showDetails(pokemon) {
-    const modal = document.getElementById("pokemon-modal");
-    const title = modal.querySelector(".modal-title");
-    const description = modal.querySelector(".modal-description");
-    const info = modal.querySelector(".modal-stats");
-
-    title.textContent = pokemon.name;
-    description.textContent = pokemon.description;
-    info.textContent = `Height: ${pokemon.height}, Weight: ${pokemon.weight}, Types: ${pokemon.types.join(
-      ", "
-    )}, Abilities: ${pokemon.abilities.join(", ")}`;
-
-    modal.classList.remove("hidden");
+  function loadList() {
+    return fetch(apiUrl)
+      .then(response => response.json())
+      .then(json => {
+        json.results.forEach(item => {
+          add({ name: item.name, detailsUrl: item.url });
+        });
+      })
+      .catch(console.error);
   }
 
-  function getImageId(name) {
-    const map = {
-      Bulbasaur: "1",
-      Charmander: "4",
-      Squirtle: "7",
-      Pikachu: "25",
-    };
-    return map[name];
+  function loadDetails(pokemon) {
+    return fetch(pokemon.detailsUrl)
+      .then(response => response.json())
+      .then(details => {
+        pokemon.height = `${details.height / 10} m`;
+        pokemon.weight = `${details.weight / 10} kg`;
+        pokemon.types = details.types.map(type => type.type.name);
+        pokemon.abilities = details.abilities.map(a => a.ability.name);
+        pokemon.imageUrl = details.sprites.front_default;
+        pokemon.description = `A wild ${pokemon.name} appeared!`;
+      })
+      .catch(console.error);
   }
 
   function addCardItem(pokemon) {
-    const grid = document.querySelector(".pokemon-grid");
+    const grid = document.querySelectorAll('.pokemon-grid')[1];
+    const card = document.createElement('div');
+    card.classList.add('pokemon-card');
 
-    const card = document.createElement("div");
-    card.classList.add("pokemon-card");
+    const title = document.createElement('h3');
+    title.textContent = pokemon.name;
 
-    const img = document.createElement("img");
-    img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getImageId(
-      pokemon.name
-    )}.png`;
+    const img = document.createElement('img');
+    img.src = pokemon.imageUrl || '';
     img.alt = pokemon.name;
 
-    const name = document.createElement("h4");
-    name.textContent = pokemon.name;
-
-    const id = document.createElement("p");
-    id.textContent = `#${getImageId(pokemon.name).padStart(3, "0")}`;
-
-    const type = document.createElement("span");
-    type.classList.add("type");
-    type.textContent = pokemon.types[0];
-    type.classList.add(pokemon.types[0]);
-
-    const button = document.createElement("button");
-    button.classList.add("card-btn", "pokemon-button");
-    button.textContent = "View Details";
-    button.addEventListener("click", function () {
-      showDetails(pokemon);
-    });
-
+    card.appendChild(title);
     card.appendChild(img);
-    card.appendChild(name);
-    card.appendChild(id);
-    card.appendChild(type);
-    card.appendChild(button);
+    card.addEventListener('click', () => showDetails(pokemon));
 
     grid.appendChild(card);
   }
 
+  function showDetails(pokemon) {
+    pokemonRepository.loadDetails(pokemon).then(() => {
+      console.log(pokemon);
+      const modal = document.getElementById('pokemon-modal');
+      const title = modal.querySelector('.modal-title');
+      const description = modal.querySelector('.modal-description');
+      const stats = modal.querySelector('.modal-stats');
+      const imageContainer = modal.querySelector('.modal-image');
+
+      title.textContent = pokemon.name;
+      description.textContent = pokemon.description;
+
+      stats.innerHTML = '';
+      imageContainer.innerHTML = '';
+
+      const image = document.createElement('img');
+      image.src = pokemon.imageUrl;
+      image.alt = pokemon.name;
+      image.classList.add('modal-pokemon-image');
+      imageContainer.appendChild(image);
+
+      const height = document.createElement('p');
+      height.textContent = `Height: ${pokemon.height}`;
+
+      const weight = document.createElement('p');
+      weight.textContent = `Weight: ${pokemon.weight}`;
+
+      const types = document.createElement('p');
+      types.textContent = `Types: ${pokemon.types.join(', ')}`;
+
+      const abilities = document.createElement('p');
+      abilities.textContent = `Abilities: ${pokemon.abilities.join(', ')}`;
+
+      stats.appendChild(height);
+      stats.appendChild(weight);
+      stats.appendChild(types);
+      stats.appendChild(abilities);
+
+      modal.classList.remove('hidden');
+    });
+  }
+
   return {
+    add,
     getAll,
+    loadList,
+    loadDetails,
     addCardItem,
-    showDetails,
   };
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
- 
-  pokemonRepository.getAll().forEach((pokemon) => {
-    pokemonRepository.addCardItem(pokemon);
-  });
+document.querySelector('.close-button').addEventListener('click', () => {
+  document.getElementById('pokemon-modal').classList.add('hidden');
+});
 
- 
-  const closeButton = document.querySelector(".close-button");
-  if (closeButton) {
-    closeButton.addEventListener("click", () => {
-      document.getElementById("pokemon-modal").classList.add("hidden");
+pokemonRepository.loadList().then(() => {
+  pokemonRepository.getAll().forEach(pokemon => {
+    pokemonRepository.loadDetails(pokemon).then(() => {
+      pokemonRepository.addCardItem(pokemon);
     });
-  }
+  });
 });
