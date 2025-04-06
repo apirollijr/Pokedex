@@ -1,7 +1,8 @@
 // sass/main.scss
 
 // 1. Normalize.css
-@use 'normalize.css/normalize';
+@use '../node_modules/normalize.css/normalize.css';
+
 
 // 2. Utilities
 @use 'utils/functions';
