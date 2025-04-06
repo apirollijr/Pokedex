@@ -10,10 +10,10 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">Pokédex</h1>
+      <h1 class="logo"><a href="index.html">Pokédex</a></h1>
       <nav>
         <ul class="nav-links">
-          <li><a href="pokedex.html">All Pokémon</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="types.html">Types</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
@@ -22,7 +22,6 @@
   </header>
 
   <main>
-    
     <section class="hero">
       <div class="container">
         <h2>Welcome to the Pokédex</h2>
@@ -31,50 +30,48 @@
       </div>
     </section>
 
-    
     <section class="type-filters">
       <div class="container">
-      <h3>Filter by Type</h3>
-      <div class="types">
-        
-        <button class="type-btn" data-type="fire">🔥 Fire</button>
-        <button class="type-btn" data-type="water">💧 Water</button>
-        <button class="type-btn" data-type="grass">🌿 Grass</button>
-        <button class="type-btn" data-type="electric">⚡ Electric</button>
-      </div>
+        <h3>Filter by Type</h3>
+        <div class="types">
+          <button class="type-btn" data-type="fire">🔥 Fire</button>
+          <button class="type-btn" data-type="water">💧 Water</button>
+          <button class="type-btn" data-type="grass">🌿 Grass</button>
+          <button class="type-btn" data-type="electric">⚡ Electric</button>
+          <button class="type-btn" data-type="all">Show All</button>
+        </div>
       </div>
     </section>
 
-   
-<section class="featured-pokemon" id="featured-pokemon">
-  <div class="container">
-    <h3>Pokemon</h3>
-    <div class="pokemon-grid">
-      <div class="pokemon-grid">
+    <section class="featured-pokemon" id="featured-pokemon">
+      <div class="container">
+        <h3>Pokémon</h3>
+        <div class="pokemon-grid"></div>
         
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
+      </div>
+    </footer>
+
+    <div id="pokemon-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 class="modal-title"></h2>
+        <div class="modal-image"></div>
+        <p class="modal-description"></p>
+        <div class="modal-stats"></div>
       </div>
     </div>
-  </div>
-</section>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
-    </div>
-  </footer>
-  <div id="pokemon-modal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <h2 class="modal-title"></h2>
-      <div class="modal-image"></div>
-      <p class="modal-description"></p>
-      <div class="modal-stats"></div>
-    </div>
-  </div>
-  
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script src="js/search.js"></script>
 </body>
 </html>

@@ -18,6 +18,16 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 2px;
+    
+      a {
+        color: theme.$pokemon-blue;
+        text-decoration: none; 
+        transition: color 0.3s ease;
+    
+        &:hover {
+          color: theme.$fire;
+        }
+      }
     }
   
     nav {
