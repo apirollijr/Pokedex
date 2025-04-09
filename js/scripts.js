@@ -1,23 +1,28 @@
+// === Pokémon Repository Module ===
+// Stores, loads, and manages Pokémon data
 const pokemonRepository = (function () {
-  const allPokemonList = [];
-  let offset = 0;
-  const chunkSize = 150;
+  const allPokemonList = []; // All fetched Pokémon (names + URLs)
+  let offset = 0;            // For future pagination (not used currently)
+  const chunkSize = 150;     // Number of Pokémon to load per chunk
   const apiBase = 'https://pokeapi.co/api/v2/pokemon/';
-  let detailLoaded = 0;
+  let detailLoaded = 0;      // Counter for how many details we've loaded
 
+  // Add Pokémon to local array
   function add(pokemon) {
     if (typeof pokemon === 'object' && 'name' in pokemon && 'detailsUrl' in pokemon) {
       allPokemonList.push(pokemon);
     }
   }
 
+  // Return full Pokémon list
   function getAll() {
     return allPokemonList;
   }
 
+  // Fetch all Pokémon basic data (name + detailsUrl)
   function loadList() {
-    // Preload all Pokémon names/URLs only once
-    if (allPokemonList.length > 0) return Promise.resolve();
+    if (allPokemonList.length > 0) return Promise.resolve(); // Avoid re-fetching
+
     return fetch(`${apiBase}?limit=1500`)
       .then(response => response.json())
       .then(json => {
@@ -27,6 +32,7 @@ const pokemonRepository = (function () {
       });
   }
 
+  // Fetch full details for a specific Pokémon (height, types, etc.)
   function loadDetails(pokemon) {
     if (pokemon.types) return Promise.resolve(); // Already loaded
 
@@ -42,6 +48,7 @@ const pokemonRepository = (function () {
       });
   }
 
+  // Load the next chunk of Pokémon and return with full details
   function loadNextChunk() {
     const chunk = allPokemonList.slice(detailLoaded, detailLoaded + chunkSize);
     detailLoaded += chunk.length;
@@ -57,9 +64,13 @@ const pokemonRepository = (function () {
   };
 })();
 
+// === Display Pokémon Cards ===
+// Dynamically creates cards in the grid
 function displayPokemon(pokemonList, clear = false) {
   const grid = document.querySelector('.pokemon-grid');
-  if (clear) grid.innerHTML = '';
+  if (!grid) return; // Avoid crashing on pages without this element
+
+  if (clear) grid.innerHTML = ''; // Clear grid if needed
 
   pokemonList.forEach(pokemon => {
     const card = document.createElement('div');
@@ -80,6 +91,7 @@ function displayPokemon(pokemonList, clear = false) {
   });
 }
 
+// === Show Pokémon Details in Modal ===
 function showDetails(pokemon) {
   const modal = document.getElementById('pokemon-modal');
   const title = modal.querySelector('.modal-title');
@@ -119,6 +131,7 @@ function showDetails(pokemon) {
   modal.classList.remove('hidden');
 }
 
+// === Filter Pokémon by Type ===
 function filterPokemon(type) {
   const all = pokemonRepository.getAll();
   const filtered = type === 'all'
@@ -127,34 +140,51 @@ function filterPokemon(type) {
   displayPokemon(filtered, true);
 }
 
-document.querySelector('.close-button').addEventListener('click', () => {
-  document.getElementById('pokemon-modal').classList.add('hidden');
-});
-
+// === Main App Initialization ===
 document.addEventListener('DOMContentLoaded', () => {
+  const closeButton = document.querySelector('.close-button');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      document.getElementById('pokemon-modal').classList.add('hidden');
+    });
+  }
+
   const typeButtons = document.querySelectorAll('.type-btn');
   let isLoading = false;
 
-  pokemonRepository.loadList().then(() => {
-    // Load the first chunk of full Pokémon data
-    loadNext();
-    setupSearch();
+  const isDexPage = !document.body.classList.contains('types-page');
 
-    // Lazy loading
-    window.addEventListener('scroll', () => {
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
-      if (nearBottom) loadNext();
-    });
+  // === If on the Types Page ===
+  if (!isDexPage && typeof loadAndRenderTypes === 'function') {
+    loadAndRenderTypes();
+  }
 
-    // Filter buttons
-    typeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const type = button.getAttribute('data-type');
-        filterPokemon(type);
+  // === If on the Pokédex Page ===
+  if (isDexPage) {
+    if (typeof setupSearch === 'function') {
+      setupSearch(); // optional search module
+    }
+
+    pokemonRepository.loadList().then(() => {
+      loadNext(); // Load initial chunk
+
+      // Lazy loading on scroll
+      window.addEventListener('scroll', () => {
+        const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+        if (nearBottom) loadNext();
+      });
+
+      // Filter buttons (Fire, Water, etc.)
+      typeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const type = button.getAttribute('data-type');
+          filterPokemon(type);
+        });
       });
     });
-  });
+  }
 
+  // === Load Next Chunk of Pokémon ===
   function loadNext() {
     if (isLoading) return;
     isLoading = true;

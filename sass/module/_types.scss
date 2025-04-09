@@ -1,0 +1,58 @@
+.types-page {
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+  
+    .type-card {
+      padding: 1.5rem;
+      border-radius: 12px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      background: #555; // fallback color if no type class
+  
+      &:hover {
+        transform: scale(1.03);
+      }
+  
+      h3 {
+        margin: 0.5rem 0;
+      }
+  
+      .icon {
+        font-size: 2rem;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+  
+      // Type color modifiers
+      &.normal   { background: #a8a878; }
+      &.fire     { background: #f05030; }
+      &.water    { background: #3399ff; }
+      &.grass    { background: #78c850; }
+      &.electric { background: #f8d030; color: #000; }
+      &.ice      { background: #98d8d8; color: #000; }
+      &.fighting { background: #c03028; }
+      &.poison   { background: #a040a0; }
+      &.ground   { background: #e0c068; color: #000; }
+      &.flying   { background: #a890f0; }
+      &.psychic  { background: #f85888; }
+      &.bug      { background: #a8b820; }
+      &.rock     { background: #b8a038; }
+      &.ghost    { background: #705898; }
+      &.dragon   { background: #7038f8; }
+      &.dark     { background: #705848; }
+      &.steel    { background: #b8b8d0; color: #000; }
+      &.fairy    { background: #ee99ac; }
+    }
+  }
+  
