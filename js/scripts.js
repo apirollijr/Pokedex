@@ -148,7 +148,32 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('pokemon-modal').classList.add('hidden');
     });
   }
+  // === Close modal on Escape key ===
+  document.addEventListener('keydown', (event) => {
+    console.log('Key pressed:', event.key); // ✅ DEBUG LINE
+    if (event.key === 'Enter' || event.key === 'Escape') {
+      // Close modal on Enter or Escape key press
+      // Check if the modal is open before trying to close it
+      const modal = document.getElementById('pokemon-modal');
+      if (modal && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+      }
+    }
+  });
 
+  // === Close modal on outside click ===
+  const modal = document.getElementById('pokemon-modal');
+  if (modal) {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  }
+  
+
+  // === Load Pokémon Types ===
+  // This function is only available on the types page
   const typeButtons = document.querySelectorAll('.type-btn');
   let isLoading = false;
 

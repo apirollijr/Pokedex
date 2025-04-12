@@ -705,6 +705,46 @@ main {
   color: #666;
 }
 
+/* Add media query for medium-sized screens */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .modal-content {
+    width: 80%;
+    max-width: none;
+    padding: 25px;
+  }
+  .modal-pokemon-image {
+    width: 140px;
+    height: 140px;
+  }
+  .close-button {
+    font-size: 1.4rem;
+    right: 12px;
+    top: 10px;
+  }
+  .modal-stats p {
+    font-size: 0.95rem;
+  }
+}
+/* Add media query for smaller screens */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    max-width: none;
+    padding: 20px;
+  }
+  .modal-pokemon-image {
+    width: 120px;
+    height: 120px;
+  }
+  .close-button {
+    font-size: 1.2rem;
+    right: 10px;
+    top: 8px;
+  }
+  .modal-stats p {
+    font-size: 0.9rem;
+  }
+}
 .types-page h2 {
   text-align: center;
   margin-bottom: 1rem;
