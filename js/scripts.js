@@ -19,6 +19,17 @@ const pokemonRepository = (function () {
     return allPokemonList;
   }
 
+  function getPokemonId(detailsUrl) {
+    const parts = detailsUrl.split('/');
+    return parts[parts.length - 2]; // ID is second last item in URL
+  }
+  
+  function getOfficialArtworkUrl(detailsUrl) {
+    const id = getPokemonId(detailsUrl);
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+  }
+  
+
   // Fetch all Pokémon basic data (name + detailsUrl)
   function loadList() {
     if (allPokemonList.length > 0) return Promise.resolve(); // Avoid re-fetching
@@ -60,7 +71,8 @@ const pokemonRepository = (function () {
     getAll,
     loadList,
     loadDetails,
-    loadNextChunk
+    loadNextChunk,
+    getOfficialArtworkUrl
   };
 })();
 
@@ -80,8 +92,9 @@ function displayPokemon(pokemonList, clear = false) {
     title.textContent = pokemon.name;
 
     const img = document.createElement('img');
-    img.src = pokemon.imageUrl || '';
+    img.src = pokemonRepository.getOfficialArtworkUrl(pokemon.detailsUrl);
     img.alt = pokemon.name;
+    img.classList.add('pokemon-image');
 
     card.appendChild(title);
     card.appendChild(img);
@@ -106,7 +119,7 @@ function showDetails(pokemon) {
   imageContainer.innerHTML = '';
 
   const image = document.createElement('img');
-  image.src = pokemon.imageUrl;
+  image.src = pokemonRepository.getOfficialArtworkUrl(pokemon.detailsUrl);
   image.alt = pokemon.name;
   image.classList.add('modal-pokemon-image');
   imageContainer.appendChild(image);

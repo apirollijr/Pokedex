@@ -490,13 +490,13 @@ main {
   font-weight: bold;
   cursor: pointer;
   z-index: 9999;
-  opacity: 0; /* Hidden by default */
-  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .back-to-top.show {
-  opacity: 1; /* Fully visible */
-  visibility: visible; /* Make it visible */
+  opacity: 1;
+  visibility: visible;
 }
 .back-to-top:hover {
   background-color: #ffcb05;
@@ -523,6 +523,13 @@ main {
 .pokemon-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+.pokemon-card .pokemon-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto;
 }
 .pokemon-card img {
   width: 100px;

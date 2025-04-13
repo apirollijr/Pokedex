@@ -18,7 +18,7 @@
       font-family: 'Poppins', sans-serif;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
-      background: #555; // fallback color if no type class
+      background: #555; 
   
       &:hover {
         transform: scale(1.03);
