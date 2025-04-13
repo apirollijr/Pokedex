@@ -752,20 +752,49 @@ main {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  text-align: center;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal.hidden {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal-content {
   background: white;
   padding: 30px;
   border-radius: 12px;
-  max-width: 500px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
   margin: auto;
-  text-align: center;
   position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.modal-description {
+  font-style: italic;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.modal-pokemon-image {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 20px;
 }
 
 .close-button {
@@ -776,25 +805,239 @@ main {
   cursor: pointer;
 }
 
-.modal-pokemon-image {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  margin-bottom: 20px;
-}
-
 .modal-stats p {
   margin: 6px 0;
   font-size: 1rem;
 }
 
-.modal-description {
-  font-style: italic;
-  margin-bottom: 15px;
-  color: #666;
+.modal-section-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 1.5rem 0 0.5rem;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* Add media query for medium-sized screens */
+/* === TYPE BADGES (No Icons) === */
+.modal-types {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.modal-types .type-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.modal-types .type-badge:hover {
+  transform: scale(1.05);
+}
+.modal-types .type-badge.type-normal {
+  background-color: #A8A878;
+}
+.modal-types .type-badge.type-fire {
+  background-color: #F08030;
+}
+.modal-types .type-badge.type-water {
+  background-color: #6890F0;
+}
+.modal-types .type-badge.type-electric {
+  background-color: #F8D030;
+}
+.modal-types .type-badge.type-grass {
+  background-color: #78C850;
+}
+.modal-types .type-badge.type-ice {
+  background-color: #98D8D8;
+}
+.modal-types .type-badge.type-fighting {
+  background-color: #C03028;
+}
+.modal-types .type-badge.type-poison {
+  background-color: #A040A0;
+}
+.modal-types .type-badge.type-ground {
+  background-color: #E0C068;
+}
+.modal-types .type-badge.type-flying {
+  background-color: #A890F0;
+}
+.modal-types .type-badge.type-psychic {
+  background-color: #F85888;
+}
+.modal-types .type-badge.type-bug {
+  background-color: #A8B820;
+}
+.modal-types .type-badge.type-rock {
+  background-color: #B8A038;
+}
+.modal-types .type-badge.type-ghost {
+  background-color: #705898;
+}
+.modal-types .type-badge.type-dragon {
+  background-color: #7038F8;
+}
+.modal-types .type-badge.type-dark {
+  background-color: #705848;
+}
+.modal-types .type-badge.type-steel {
+  background-color: #B8B8D0;
+}
+.modal-types .type-badge.type-fairy {
+  background-color: #EE99AC;
+}
+
+.modal-weaknesses {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.modal-weaknesses .type-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.modal-weaknesses .type-badge:hover {
+  transform: scale(1.05);
+}
+.modal-weaknesses .type-badge.type-normal {
+  background-color: #A8A878;
+}
+.modal-weaknesses .type-badge.type-fire {
+  background-color: #F08030;
+}
+.modal-weaknesses .type-badge.type-water {
+  background-color: #6890F0;
+}
+.modal-weaknesses .type-badge.type-electric {
+  background-color: #F8D030;
+}
+.modal-weaknesses .type-badge.type-grass {
+  background-color: #78C850;
+}
+.modal-weaknesses .type-badge.type-ice {
+  background-color: #98D8D8;
+}
+.modal-weaknesses .type-badge.type-fighting {
+  background-color: #C03028;
+}
+.modal-weaknesses .type-badge.type-poison {
+  background-color: #A040A0;
+}
+.modal-weaknesses .type-badge.type-ground {
+  background-color: #E0C068;
+}
+.modal-weaknesses .type-badge.type-flying {
+  background-color: #A890F0;
+}
+.modal-weaknesses .type-badge.type-psychic {
+  background-color: #F85888;
+}
+.modal-weaknesses .type-badge.type-bug {
+  background-color: #A8B820;
+}
+.modal-weaknesses .type-badge.type-rock {
+  background-color: #B8A038;
+}
+.modal-weaknesses .type-badge.type-ghost {
+  background-color: #705898;
+}
+.modal-weaknesses .type-badge.type-dragon {
+  background-color: #7038F8;
+}
+.modal-weaknesses .type-badge.type-dark {
+  background-color: #705848;
+}
+.modal-weaknesses .type-badge.type-steel {
+  background-color: #B8B8D0;
+}
+.modal-weaknesses .type-badge.type-fairy {
+  background-color: #EE99AC;
+}
+
+/* === EVOLUTION STYLING === */
+.modal-evolution {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.modal-evolution .evolution-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.modal-evolution .evolution-box:hover {
+  transform: scale(1.05);
+}
+.modal-evolution .evolution-box img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.modal-evolution .evolution-box span {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* === Stat Bar Chart === */
+.stat-bars {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+.stat-bars .stat {
+  margin-bottom: 0.75rem;
+}
+.stat-bars .stat .label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+.stat-bars .stat .bar-container {
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 14px;
+}
+.stat-bars .stat .bar-container .bar {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+/* === Responsive Layouts === */
 @media (max-width: 1024px) and (min-width: 769px) {
   .modal-content {
     width: 80%;
@@ -814,7 +1057,6 @@ main {
     font-size: 0.95rem;
   }
 }
-/* Add media query for smaller screens */
 @media (max-width: 768px) {
   .modal-content {
     width: 90%;
