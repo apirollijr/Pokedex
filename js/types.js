@@ -44,12 +44,19 @@ function loadAndRenderTypes(containerSelector = '.type-grid') {
 
         // Set the inner HTML content of the card
         card.innerHTML = `
-          <span class="icon">${type.icon}</span>
-          <h3>${capitalize(type.name)}</h3>
-          <p><strong>Strong against:</strong> ${type.damageTo.join(', ') || '—'}</p>
-          <p><strong>Weak against:</strong> ${type.damageFrom.join(', ') || '—'}</p>
-          <p><strong>Examples:</strong> ${type.examples.join(', ')}</p>
+          <div class="type-header">
+            <span class="icon">${type.icon}</span>
+            <h3>${capitalize(type.name)}</h3>
+          </div>
+          <div class="damage">
+            <p><strong>Strong against:</strong> ${type.damageTo.join(', ') || '—'}</p>
+            <p><strong>Weak against:</strong> ${type.damageFrom.join(', ') || '—'}</p>
+          </div>
+          <div class="examples">
+            <p><strong>Examples:</strong> ${type.examples.join(', ')}</p>
+          </div>
         `;
+
 
         // Append the card to the container
         container.appendChild(card);
@@ -77,3 +84,9 @@ function getTypeIcon(type) {
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// Call the function once the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  loadAndRenderTypes();
+});
+

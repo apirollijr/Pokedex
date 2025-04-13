@@ -2,49 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pokédex</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Types</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="types-page">
+<body>
   <header class="site-header">
     <div class="container">
       <h1 class="logo"><a href="index.html">Pokédex</a></h1>
-      <button class="mobile-menu-toggle" aria-label="Toggle navigation">&#9776;</button>
       <nav>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="types.html">Types</a></li>
+          <li><a href="types.html" class="active">Types</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="types-page">
+  <main class="types-main">
     <div class="container">
-      <h2>Pokémon Types</h2>
-      <p>Explore each type, its strengths and weaknesses, and example Pokémon.</p>
-  
-      <div class="type-grid"></div> <!-- where cards get injected -->
+      <h2>Explore Pokémon Types</h2>
+      <div class="type-grid"></div>
     </div>
   </main>
-  
-  
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
-      </div>
-    </footer>
-
- 
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="js/types.js"></script>
   <script src="js/mobile-menu.js"></script>
+  <script src="js/types.js"></script>
 </body>
 </html>

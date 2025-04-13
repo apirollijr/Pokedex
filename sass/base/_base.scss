@@ -7,16 +7,21 @@
 }
 
 
-html,
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
-    background-color: theme.$background-light;
-    height: 100%;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    
-  }
+  background-color: theme.$background-light;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
 
 main {
   flex: 1;
@@ -32,3 +37,6 @@ main {
     scroll-behavior: smooth;  
   }
   
+  footer {
+    margin: 0;
+  }

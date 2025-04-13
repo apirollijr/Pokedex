@@ -319,14 +319,19 @@ p, a {
   box-sizing: border-box;
 }
 
-html,
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   background-color: #ffffff;
-  height: 100%;
-  max-width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 main {
@@ -346,6 +351,38 @@ main {
   height: 100vh;
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+footer {
+  margin: 0;
+}
+
+.about-page .container {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.about-page h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.about-page h3 {
+  margin-top: 2rem;
+}
+.about-page p, .about-page li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+.about-page ul {
+  padding-left: 1.25rem;
+}
+.about-page a {
+  color: #007acc;
+  text-decoration: none;
+}
+.about-page a:hover {
+  text-decoration: underline;
 }
 
 .site-header {
@@ -1086,93 +1123,108 @@ main {
     font-size: 0.9rem;
   }
 }
-.types-page h2 {
-  text-align: center;
-  margin-bottom: 1rem;
+.types-main {
+  flex: 1;
 }
-.types-page .type-grid {
+.types-main .container {
+  padding: 2rem 1rem;
+}
+.types-main h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.types-main .type-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
 }
-.types-page .type-card {
+.types-main .type-card {
   padding: 1.5rem;
   border-radius: 12px;
   color: #fff;
-  font-family: "Poppins", sans-serif;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid #ccc;
+  text-align: center;
   transition: transform 0.3s ease;
-  background: #555;
+  background: #999;
 }
-.types-page .type-card:hover {
-  transform: scale(1.03);
+.types-main .type-card:hover {
+  transform: translateY(-4px);
 }
-.types-page .type-card h3 {
-  margin: 0.5rem 0;
-}
-.types-page .type-card .icon {
-  font-size: 2rem;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-.types-page .type-card.normal {
+.types-main .type-card.normal {
   background: #a8a878;
 }
-.types-page .type-card.fire {
-  background: #f05030;
+.types-main .type-card.fire {
+  background: #f08030;
 }
-.types-page .type-card.water {
-  background: #3399ff;
+.types-main .type-card.water {
+  background: #6890f0;
 }
-.types-page .type-card.grass {
+.types-main .type-card.electric {
+  background: #f8d030;
+}
+.types-main .type-card.grass {
   background: #78c850;
 }
-.types-page .type-card.electric {
-  background: #f8d030;
-  color: #000;
-}
-.types-page .type-card.ice {
+.types-main .type-card.ice {
   background: #98d8d8;
-  color: #000;
 }
-.types-page .type-card.fighting {
+.types-main .type-card.fighting {
   background: #c03028;
 }
-.types-page .type-card.poison {
+.types-main .type-card.poison {
   background: #a040a0;
 }
-.types-page .type-card.ground {
+.types-main .type-card.ground {
   background: #e0c068;
-  color: #000;
 }
-.types-page .type-card.flying {
+.types-main .type-card.flying {
   background: #a890f0;
 }
-.types-page .type-card.psychic {
+.types-main .type-card.psychic {
   background: #f85888;
 }
-.types-page .type-card.bug {
+.types-main .type-card.bug {
   background: #a8b820;
 }
-.types-page .type-card.rock {
+.types-main .type-card.rock {
   background: #b8a038;
 }
-.types-page .type-card.ghost {
+.types-main .type-card.ghost {
   background: #705898;
 }
-.types-page .type-card.dragon {
+.types-main .type-card.dragon {
   background: #7038f8;
 }
-.types-page .type-card.dark {
+.types-main .type-card.dark {
   background: #705848;
 }
-.types-page .type-card.steel {
+.types-main .type-card.steel {
   background: #b8b8d0;
-  color: #000;
 }
-.types-page .type-card.fairy {
+.types-main .type-card.fairy {
   background: #ee99ac;
+}
+.types-main .type-card .type-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.types-main .type-card .type-header .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.types-main .type-card .type-header h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  text-transform: capitalize;
+}
+.types-main .type-card .damage,
+.types-main .type-card .examples {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  line-height: 1.5;
 }
 
 /*# sourceMappingURL=style.css.map */
