@@ -1,59 +1,126 @@
-@use '../utils/variables' as vars;
 @use '../theme/colors' as theme;
 
 .site-header {
-    background-color: theme.$pokemon-yellow;
-    color: theme.$pokemon-blue;
-    padding: 20px 0;
-    border-bottom: 4px solid theme.$pokemon-blue;
-  
-    .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  background-color: theme.$pokemon-yellow;
+  color: theme.$pokemon-blue;
+  padding: 20px 0;
+  border-bottom: 4px solid theme.$pokemon-blue;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    a {
+      color: theme.$pokemon-blue;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: theme.$fire;
+      }
     }
-  
-    .logo {
-      font-size: 2rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: theme.$pokemon-blue;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &.active {
+      color: theme.$fire;
+    }
+  }
+
+  nav {
+    .nav-links {
+      gap: 20px;
+      align-items: center;
+
+      li {
+        list-style: none;
+      }
+
       a {
         color: theme.$pokemon-blue;
-        text-decoration: none; 
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
         transition: color 0.3s ease;
-    
+        text-decoration: none;
+
         &:hover {
           color: theme.$fire;
         }
       }
     }
-  
-    nav {
+  }
+}
+
+// Mobile nav (default)
+.site-header {
+  nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: theme.$pokemon-yellow;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    gap: 10px;
+    border-top: 2px solid theme.$pokemon-blue;
+
+    &.open {
       display: flex;
-  
-      .nav-links {
-        display: flex;
-        gap: 20px;
-  
-        li {
-          list-style: none;
-        }
-  
-        a {
-          color: theme.$pokemon-blue;
-          font-size: 1rem;
-          font-weight: bold;
-          text-transform: uppercase;
-          transition: color 0.3s ease;
-          text-decoration: none;
-  
-          &:hover {
-            color: theme.$fire; 
-          }
-        }
-      }
+    }
+
+    a {
+      text-align: center;
+      padding: 0.75rem 0;
     }
   }
-  
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+// Desktop nav override
+@media (min-width: 769px) {
+  .site-header {
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      border-top: none;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+    }
+
+    nav {
+      position: static;
+      width: auto;
+      background: none;
+    }
+  }
+}

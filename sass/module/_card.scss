@@ -1,106 +1,159 @@
 @use '../theme/colors' as colors;
 
 .pokemon-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+
+  // Default (desktop): 4 columns
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.pokemon-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   }
-  
-  .pokemon-card {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 10px;
-    padding: 1rem;
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #333333;
+    word-break: break-word;
     text-align: center;
-    width: 150px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 2rem;
-  
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #666666;
+    margin: 0.5rem 0;
+  }
+
+  .type {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ffcb05;
+    text-transform: capitalize;
+
+    &.electric { background-color: #f8d030; }
+    &.fire     { background-color: #f08030; }
+    &.grass    { background-color: #78c850; }
+    &.water    { background-color: #6890f0; }
+  }
+
+  .card-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #2a75bb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      background-color: #ffcb05;
+      color: #2a75bb;
+      transform: translateY(-2px);
     }
-  
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.featured-pokemon {
+  h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: colors.$pokemon-blue;
+  }
+}
+
+// 🔹 Medium screens: 2 columns
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pokemon-card {
+    padding: 1.2rem;
+
     img {
       width: 100px;
       height: 100px;
-      object-fit: contain;
-      margin-bottom: 0.5rem;
     }
-  
+
     h4 {
       font-size: 1.2rem;
-      margin: 0.5rem 0;
-      color: #333333;
     }
-  
-    p {
-      font-size: 0.9rem;
-      color: #666666;
-      margin: 0.5rem 0;
-    }
-  
-    .type {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #ffffff;
-      background-color: #ffcb05;
-      text-transform: capitalize;
-  
-      &.electric {
-        background-color: #f8d030;
-      }
-  
-      &.fire {
-        background-color: #f08030;
-      }
-  
-      &.grass {
-        background-color: #78c850;
-      }
-  
-      &.water {
-        background-color: #6890f0;
-      }
-    }
-  
+
     .card-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
       font-size: 0.9rem;
-      font-weight: bold;
-      color: #ffffff;
-      background-color: #2a75bb; 
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-  
-      &:hover {
-        background-color: #ffcb05; 
-        color: #2a75bb;
-        transform: translateY(-2px);
-      }
-  
-      &:active {
-        transform: translateY(0);
-      }
     }
+  }
+}
+
+// 🔹 Small screens: 1 column, big cards
+@media (max-width: 768px) {
+  .pokemon-grid {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
   }
 
-  .featured-pokemon {
-    h3 {
-      text-align: center; 
-      font-size: 1.5rem; 
-      margin-bottom: 1rem; 
-      color: colors.$pokemon-blue; 
+  .pokemon-card {
+    width: 100%;
+    max-width: 100%;
+    justify-self: center;
+    padding: 2rem 1rem;
+
+    img {
+      width: 140px;
+      height: 140px;
+    }
+
+    h4 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .type {
+      font-size: 0.9rem;
+      padding: 0.4rem 1rem;
+    }
+
+    .card-btn {
+      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
     }
   }
+}

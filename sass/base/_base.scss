@@ -2,12 +2,20 @@
 @use '../theme/colors' as theme;
 @use '../utils/mixins' as mixins;
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
 html,
 body {
     background-color: theme.$background-light;
     height: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    
   }
 
 main {
@@ -17,3 +25,10 @@ main {
   .container {
     @include mixins.container;
   }
+
+  .main-scroll-area {
+    height: 100vh;            
+    overflow-y: auto;         
+    scroll-behavior: smooth;  
+  }
+  
