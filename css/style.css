@@ -368,6 +368,7 @@ footer {
 }
 .about-page h3 {
   margin-top: 2rem;
+  color: #222;
 }
 .about-page p, .about-page li {
   font-size: 1rem;
@@ -376,6 +377,7 @@ footer {
 }
 .about-page ul {
   padding-left: 1.25rem;
+  margin-top: 0.5rem;
 }
 .about-page a {
   color: #007acc;
@@ -383,6 +385,32 @@ footer {
 }
 .about-page a:hover {
   text-decoration: underline;
+}
+.about-page .github-link {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.about-page .github-link i {
+  font-size: 1.4rem;
+}
+.about-page .bio-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.about-page .bio-box .bio-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.about-page .bio-box p {
+  flex: 1;
 }
 
 .site-header {
