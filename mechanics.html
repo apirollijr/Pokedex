@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Mechanics</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo"><a href="index.html">Pokédex</a></h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="mechanics.html" class="active">Mechanics</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mechanics-page">
+    <div class="container">
+      <h2>Pokémon Stat Mechanics</h2>
+      <div class="mechanics-grid" id="mechanicsGrid"></div>
+    </div>
+  
+
+  <!-- ========================= -->
+<!-- Section: Stat Explanations -->
+<!-- ========================= -->
+<section class="mechanics-section">
+    <h2>Stat Breakdown</h2>
+    <div class="stat-info-grid">
+      <div class="stat-info-card">
+        <span class="emoji">❤️</span>
+        <h3>HP</h3>
+        <p>Hit Points. Determines how much damage a Pokémon can take before fainting.</p>
+      </div>
+      <div class="stat-info-card">
+        <span class="emoji">⚔️</span>
+        <h3>Attack</h3>
+        <p>Affects the power of physical moves.</p>
+      </div>
+      <div class="stat-info-card">
+        <span class="emoji">🛡️</span>
+        <h3>Defense</h3>
+        <p>Reduces damage from physical attacks.</p>
+      </div>
+      <div class="stat-info-card">
+        <span class="emoji">✨</span>
+        <h3>Special Attack</h3>
+        <p>Affects the power of special moves.</p>
+      </div>
+      <div class="stat-info-card">
+        <span class="emoji">🔰</span>
+        <h3>Special Defense</h3>
+        <p>Reduces damage from special attacks.</p>
+      </div>
+      <div class="stat-info-card">
+        <span class="emoji">⚡</span>
+        <h3>Speed</h3>
+        <p>Determines which Pokémon attacks first in battle.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Add another section for type damage -->
+  <section class="mechanics-section">
+    <h2>Type Damage Relations</h2>
+    <div id="damageGrid" class="type-relations-grid"></div>
+  </section>
+  
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/mechanics.js"></script>
+  <script src="js/mobile-menu.js"></script>
+  <script src="js/scroll.js" defer></script>
+</body>
+</html>

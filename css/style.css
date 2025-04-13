@@ -1255,4 +1255,238 @@ footer {
   line-height: 1.5;
 }
 
+.mechanics-page .container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.mechanics-page h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.mechanics-page .mechanics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.mechanics-page .mechanic-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.mechanics-page .mechanic-card:hover {
+  transform: translateY(-4px);
+}
+.mechanics-page .mechanic-card h3 {
+  margin: 1rem 0;
+  text-transform: capitalize;
+}
+.mechanics-page .mechanic-card .poke-art {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.mechanics-page .mechanic-card .stat-list {
+  margin-top: 1rem;
+}
+.mechanics-page .mechanic-card .stat-list .stat-row {
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+.mechanics-page .mechanic-card .stat-list .stat-row .stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+  width: 120px;
+}
+.mechanics-page .mechanic-card .stat-list .stat-row .bar-container {
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 14px;
+}
+.mechanics-page .mechanic-card .stat-list .stat-row .bar-container .bar {
+  background: #4caf50;
+  height: 100%;
+  color: #fff;
+  font-size: 0.75rem;
+  padding-left: 4px;
+  line-height: 14px;
+  border-radius: 6px 0 0 6px;
+}
+.mechanics-page .stat-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 768px) {
+  .mechanics-page .stat-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .mechanics-page .stat-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.mechanics-page .stat-info-card {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+.mechanics-page .stat-info-card:hover {
+  transform: translateY(-4px);
+}
+.mechanics-page .stat-info-card .emoji {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+.mechanics-page .stat-info-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  word-wrap: break-word;
+}
+.mechanics-page .stat-info-card p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+.mechanics-page .type-relations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 1024px) {
+  .mechanics-page .type-relations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .mechanics-page .type-relations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.mechanics-page .type-relation-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.mechanics-page .type-relation-card:hover {
+  transform: translateY(-4px);
+}
+.mechanics-page .type-relation-card h3 {
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+.mechanics-page .type-relation-card .relation-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.mechanics-page .type-relation-card .relation-row .type-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.type-badge.normal {
+  background-color: #a8a878;
+}
+
+.type-badge.fire {
+  background-color: #f08030;
+}
+
+.type-badge.water {
+  background-color: #6890f0;
+}
+
+.type-badge.grass {
+  background-color: #78c850;
+}
+
+.type-badge.electric {
+  background-color: #f8d030;
+}
+
+.type-badge.ice {
+  background-color: #98d8d8;
+}
+
+.type-badge.fighting {
+  background-color: #c03028;
+}
+
+.type-badge.poison {
+  background-color: #a040a0;
+}
+
+.type-badge.ground {
+  background-color: #e0c068;
+}
+
+.type-badge.flying {
+  background-color: #a890f0;
+}
+
+.type-badge.psychic {
+  background-color: #f85888;
+}
+
+.type-badge.bug {
+  background-color: #a8b820;
+}
+
+.type-badge.rock {
+  background-color: #b8a038;
+}
+
+.type-badge.ghost {
+  background-color: #705898;
+}
+
+.type-badge.dragon {
+  background-color: #7038f8;
+}
+
+.type-badge.dark {
+  background-color: #705848;
+}
+
+.type-badge.steel {
+  background-color: #b8b8d0;
+}
+
+.type-badge.fairy {
+  background-color: #ee99ac;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,215 @@
+.mechanics-page {
+  .container {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  // === Stat Mechanics Cards (main Pokémon cards)
+  .mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .mechanic-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    h3 {
+      margin: 1rem 0;
+      text-transform: capitalize;
+    }
+
+    .poke-art {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .stat-list {
+      margin-top: 1rem;
+
+      .stat-row {
+        margin-bottom: 0.75rem;
+        text-align: left;
+
+        .stat-label {
+          font-size: 0.9rem;
+          font-weight: 600;
+          display: inline-block;
+          width: 120px;
+        }
+
+        .bar-container {
+          background: #eee;
+          border-radius: 6px;
+          overflow: hidden;
+          height: 14px;
+
+          .bar {
+            background: #4caf50;
+            height: 100%;
+            color: #fff;
+            font-size: 0.75rem;
+            padding-left: 4px;
+            line-height: 14px;
+            border-radius: 6px 0 0 6px;
+          }
+        }
+      }
+    }
+  }
+
+  // === Section for Stat Explanations (emoji-based cards)
+  .stat-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .stat-info-card {
+    background-color: #f8f8f8; // light neutral background
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-4px);
+    }
+  
+    .emoji {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+  
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      text-transform: capitalize;
+      word-wrap: break-word;
+    }
+  
+    p {
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+  }
+  
+
+  // === Section for Type Damage Relations
+  .type-relations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr); // 2 columns on tablet
+    }
+  
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr; // 1 column on mobile
+    }
+
+  }
+  
+  .type-relation-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    text-align: center;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  
+    &:hover {
+      transform: translateY(-4px);
+    }
+  
+    h3 {
+      font-size: 1.4rem;
+      text-transform: capitalize;
+      margin-bottom: 0.5rem;
+    }
+  
+    .relation-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+  
+      .type-badge {
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: capitalize;
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      }
+    }
+  }
+}  
+
+
+$type-colors: (
+  normal: #a8a878,
+  fire: #f08030,
+  water: #6890f0,
+  grass: #78c850,
+  electric: #f8d030,
+  ice: #98d8d8,
+  fighting: #c03028,
+  poison: #a040a0,
+  ground: #e0c068,
+  flying: #a890f0,
+  psychic: #f85888,
+  bug: #a8b820,
+  rock: #b8a038,
+  ghost: #705898,
+  dragon: #7038f8,
+  dark: #705848,
+  steel: #b8b8d0,
+  fairy: #ee99ac
+);
+
+@each $type, $color in $type-colors {
+  .type-badge.#{$type} {
+    background-color: $color;
+  }
+}
