@@ -238,6 +238,17 @@
   }
 }
 
+.modal-content.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+
 /* === Responsive Layouts === */
 @media (max-width: 1024px) and (min-width: 769px) {
   .modal-content {

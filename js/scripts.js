@@ -218,8 +218,8 @@ function showDetails(pokemon) {
   stats.appendChild(document.createElement('hr'));
   stats.appendChild(createStatBars(pokemon.baseStats));
 
-  // Evolutions
-  evolutionBox.innerHTML = '';
+// === Evolutions ===
+evolutionBox.innerHTML = '';
 
 loadEvolutionChain(pokemon.evolutionChainUrl).then(chain => {
   chain.forEach(p => {
@@ -228,20 +228,46 @@ loadEvolutionChain(pokemon.evolutionChainUrl).then(chain => {
       .then(data => {
         const evoBox = document.createElement('div');
         evoBox.classList.add('evolution-box');
+        evoBox.style.cursor = 'pointer';
 
         const img = document.createElement('img');
         img.src = data.sprites.other['official-artwork'].front_default;
-        img.alt = p.name;
+        img.alt = data.name;
 
         const label = document.createElement('span');
-        label.textContent = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+        label.textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
 
         evoBox.appendChild(img);
         evoBox.appendChild(label);
         evolutionBox.appendChild(evoBox);
+
+        // ✅ Clean single click handler with fade
+        evoBox.addEventListener('click', () => {
+          const modalContent = document.querySelector('.modal-content');
+
+          // Fade out
+          modalContent.classList.remove('fade-in');
+          modalContent.classList.add('fade-out');
+
+          setTimeout(() => {
+            pokemonRepository.loadDetails({
+              name: data.name,
+              detailsUrl: `https://pokeapi.co/api/v2/pokemon/${data.name}/`
+            }).then(() => {
+              const selectedPokemon = pokemonRepository.getAll().find(p => p.name === data.name);
+              if (selectedPokemon) showDetails(selectedPokemon);
+
+              // Fade in
+              modalContent.classList.remove('fade-out');
+              modalContent.classList.add('fade-in');
+            });
+          }, 300); // Match CSS transition
+        });
       });
   });
 });
+
+
 
 
 
