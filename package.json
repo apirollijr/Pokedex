@@ -3,11 +3,14 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "live-server": "^1.2.2",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
     "sass": "^1.86.0"
   },
   "scripts": {
-    "sass": "sass --load-path=node_modules sass/main.scss css/style.css",
+    "sass": "sass --load-path=node_modules sass/main.scss css/style.min.css --style=compressed",
     "watch:sass": "sass --watch --load-path=node_modules sass/main.scss css/style.css",
     "start": "live-server --watch=css,js,html"
   }
