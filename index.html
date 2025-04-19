@@ -5,103 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokédex</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-  <div class="main-scroll-area" style="height: 100vh; overflow-y: auto;">
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo"><a href="index.html">Pokédex</a></h1>
-      <button class="mobile-menu-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="types.html">Types</a></li>
-          <li><a href="mechanics.html">Mechanics</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Welcome to the Pokédex</h2>
-        <p>Search, explore, and learn about every Pokémon ever!</p>
-        <input type="search" id="searchInput" placeholder="Search by name or number..." />
-      </div>
-    </section>
-
-    <section class="type-filters">
-      <div class="container">
-        <h3>Filter by Type</h3>
-        <div class="types">
-          <button class="type-btn" data-type="fire">🔥 Fire</button>
-          <button class="type-btn" data-type="water">💧 Water</button>
-          <button class="type-btn" data-type="grass">🌿 Grass</button>
-          <button class="type-btn" data-type="electric">⚡ Electric</button>
-          <button class="type-btn" data-type="all">Show All</button>
+<body class="d-flex flex-column min-vh-100">
+  <div class="main-scroll-area">
+    <header class="bg-dark sticky-top shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <a class="navbar-brand fw-bold fs-2" href="index.html">Pokédex</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Types</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mechanics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
         </div>
-      </div>
-    </section>
+      </nav>
+    </header>
+    
 
-    <section class="featured-pokemon" id="featured-pokemon">
-      <div class="container">
-        <h3>Pokémon</h3>
-        <div class="pokemon-grid"></div>
-      </div>
-    </section>
+    <main>
+      <section class="py-5 text-center bg-primary text-white">
+        <div class="container">
+          <h2>Welcome to the Pokédex</h2>
+          <p class="lead">Search, explore, and learn about every Pokémon ever!</p>
+          <input type="search" id="searchInput" class="form-control mx-auto mt-3" style="max-width: 400px;" placeholder="Search by name or number..." />
+        </div>
+      </section>
 
-    <footer class="site-footer">
+      <section class="py-4 bg-light">
+        <div class="container text-center">
+          <h3>Filter by Type</h3>
+          <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+            <button class="btn btn-outline-danger btn-sm" data-type="fire">🔥 Fire</button>
+            <button class="btn btn-outline-primary btn-sm" data-type="water">💧 Water</button>
+            <button class="btn btn-outline-success btn-sm" data-type="grass">🌿 Grass</button>
+            <button class="btn btn-outline-warning btn-sm" data-type="electric">⚡ Electric</button>
+            <button class="btn btn-outline-secondary btn-sm" data-type="all">Show All</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5" id="featured-pokemon">
+        <div class="container">
+          <h3 class="text-center mb-4">Pokémon</h3>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 px-4" id="pokemonGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
       <div class="container">
-        <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
+        <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank" class="text-info">PokéAPI</a>.</p>
       </div>
     </footer>
+    
+  </div>
 
-    <div id="pokemon-modal" class="modal hidden">
-      <div class="modal-content">
-        <!-- Pokémon Name -->
-        <h2 class="modal-title"></h2>
-    
-        <!-- Image -->
-        <div class="modal-image"></div>
-    
-        <!-- Description (Flavor text) -->
-        <p class="modal-description"></p>
-    
-        <!-- Category (e.g., Flame Pokémon) -->
-        <p class="modal-category"></p>
-    
-        <!-- Gender Ratio (♂ 87.5%, ♀ 12.5%) -->
-        <p class="modal-gender"></p>
-    
-        <!-- Types -->
-        <h4 class="modal-section-label">Types</h4>
-        <div class="modal-types"></div>
-    
-        <!-- Weaknesses -->
-        <h4 class="modal-section-label">Weak To</h4>
-        <div class="modal-weaknesses"></div>
-    
-        <!-- Base Stats -->
-        <h4 class="modal-section-label">Base Stats</h4>
-        <div class="modal-stats"></div>
-    
-        <!-- Evolutions -->
-        <h4 class="modal-section-label">Evolution</h4>
-        <div class="modal-evolution"></div>
+    <!-- Back to Top -->
+    <button id="backToTop" class="btn btn-primary position-fixed bottom-0 end-0 m-3" aria-label="Scroll to top">↑</button>
+
+ 
+
+
+ 
+  <!-- Modal -->
+<div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pokemonModalLabel">Pokémon Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalContent">
+        
       </div>
     </div>
-    
-  </main>
   </div>
-  <button id="backToTop" class="back-to-top" aria-label="Scroll to top">↑</button>
-  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/scroll.js" defer></script>
+</div>
+
+
+
+
+  <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/search.js"></script>
+<script src="js/types.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/scroll.js"></script>
+
 </body>
+
 </html>
