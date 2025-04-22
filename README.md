@@ -31,5 +31,5 @@ A web-based Pokédex application that allows users to explore Pokémon, filter t
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/pokedex.git
+   git clone https://github.com/apirollijr/pokedex.git
    cd pokedex
