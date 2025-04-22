@@ -1,12 +1,12 @@
 function setupSearch() {
   // Get the input element where the user will type their search query
-  const searchInput = document.getElementById('searchInput');
-  
+  const searchInput = document.getElementById("searchInput");
+
   // Exit the function early if the input element is not found
   if (!searchInput) return;
 
   // Add an event listener that runs every time the user types in the input
-  searchInput.addEventListener('input', () => {
+  searchInput.addEventListener("input", () => {
     // Get the current input value, convert to lowercase, and remove whitespace
     const query = searchInput.value.toLowerCase().trim();
 
@@ -21,7 +21,7 @@ function setupSearch() {
     });
 
     // Load details for each filtered Pokémon (returns an array of Promises)
-    const detailPromises = filtered.map(pokemon =>
+    const detailPromises = filtered.map((pokemon) =>
       pokemonRepository.loadDetails(pokemon)
     );
 
@@ -31,3 +31,5 @@ function setupSearch() {
     });
   });
 }
+
+setupSearch();

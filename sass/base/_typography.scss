@@ -1,12 +1,15 @@
-@use '../utils/variables' as vars;
-@use '../theme/colors' as theme;
-@use '../utils/mixins' as mixins;
+@use "../utils/variables" as vars;
+@use "../theme/colors" as theme;
+@use "../utils/mixins" as mixins;
 
+h1,
+h2,
+h3,
+.logo {
+  font-family: vars.$font-heading;
+}
 
-h1, h2, h3, .logo {
-    font-family: vars.$font-heading;
-  }
-
-    p, a {
-        font-family: vars.$font-body;
-    }
+p,
+a {
+  font-family: vars.$font-body;
+}

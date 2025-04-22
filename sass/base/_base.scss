@@ -1,13 +1,15 @@
-@use '../utils/variables' as vars;
-@use '../theme/colors' as theme;
-@use '../utils/mixins' as mixins;
+@use "../utils/variables" as vars;
+@use "../theme/colors" as theme;
+@use "../utils/mixins" as mixins;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -22,21 +24,20 @@ body {
   padding: 0;
 }
 
-
 main {
   flex: 1;
 }
 
-  .container {
-    @include mixins.container;
-  }
+.container {
+  @include mixins.container;
+}
 
-  .main-scroll-area {
-    height: 100vh;            
-    overflow-y: auto;         
-    scroll-behavior: smooth;  
-  }
-  
-  footer {
-    margin: 0;
-  }
+.main-scroll-area {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+footer {
+  margin: 0;
+}

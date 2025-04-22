@@ -1,4 +1,4 @@
-@use '../theme/colors' as colors;
+@use "../theme/colors" as colors;
 
 .pokemon-grid {
   display: grid;
@@ -22,13 +22,12 @@
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   }
-    .pokemon-image {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem auto;
-   
+  .pokemon-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem auto;
   }
 
   img {
@@ -63,10 +62,18 @@
     background-color: #ffcb05;
     text-transform: capitalize;
 
-    &.electric { background-color: #f8d030; }
-    &.fire     { background-color: #f08030; }
-    &.grass    { background-color: #78c850; }
-    &.water    { background-color: #6890f0; }
+    &.electric {
+      background-color: #f8d030;
+    }
+    &.fire {
+      background-color: #f08030;
+    }
+    &.grass {
+      background-color: #78c850;
+    }
+    &.water {
+      background-color: #6890f0;
+    }
   }
 
   .card-btn {

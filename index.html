@@ -1,107 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pokédex</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.min.css" />
-</head>
-<body>
-  <div class="main-scroll-area" style="height: 100vh; overflow-y: auto;">
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo"><a href="index.html">Pokédex</a></h1>
-      <button class="mobile-menu-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="types.html">Types</a></li>
-          <li><a href="mechanics.html">Mechanics</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Welcome to the Pokédex</h2>
-        <p>Search, explore, and learn about every Pokémon ever!</p>
-        <input type="search" id="searchInput" placeholder="Search by name or number..." />
-      </div>
-    </section>
-
-    <section class="type-filters">
-      <div class="container">
-        <h3>Filter by Type</h3>
-        <div class="types">
-          <button class="type-btn" data-type="fire">🔥 Fire</button>
-          <button class="type-btn" data-type="water">💧 Water</button>
-          <button class="type-btn" data-type="grass">🌿 Grass</button>
-          <button class="type-btn" data-type="electric">⚡ Electric</button>
-          <button class="type-btn" data-type="all">Show All</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dist/style.min.css" />
+  </head>
+  <body>
+    <div class="main-scroll-area" style="height: 100vh; overflow-y: auto">
+      <header class="site-header">
+        <div class="container">
+          <h1 class="logo"><a href="index.html">Pokédex</a></h1>
+          <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+            &#9776;
+          </button>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="types.html">Types</a></li>
+              <li><a href="mechanics.html">Mechanics</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </nav>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <section class="featured-pokemon" id="featured-pokemon">
-      <div class="container">
-        <h3>Pokémon</h3>
-        <div class="pokemon-grid"></div>
-      </div>
-    </section>
+      <main>
+        <section class="hero">
+          <div class="container">
+            <h2>Welcome to the Pokédex</h2>
+            <p>Search, explore, and learn about every Pokémon ever!</p>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search by name or number..."
+            />
+          </div>
+        </section>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
-      </div>
-    </footer>
+        <section class="type-filters">
+          <div class="container">
+            <h3>Filter by Type</h3>
+            <div class="types">
+              <button class="type-btn" data-type="fire">🔥 Fire</button>
+              <button class="type-btn" data-type="water">💧 Water</button>
+              <button class="type-btn" data-type="grass">🌿 Grass</button>
+              <button class="type-btn" data-type="electric">⚡ Electric</button>
+              <button class="type-btn" data-type="all">Show All</button>
+            </div>
+          </div>
+        </section>
 
-    <div id="pokemon-modal" class="modal hidden">
-      <div class="modal-content">
-        <!-- Pokémon Name -->
-        <h2 class="modal-title"></h2>
-    
-        <!-- Image -->
-        <div class="modal-image"></div>
-    
-        <!-- Description (Flavor text) -->
-        <p class="modal-description"></p>
-    
-        <!-- Category (e.g., Flame Pokémon) -->
-        <p class="modal-category"></p>
-    
-        <!-- Gender Ratio (♂ 87.5%, ♀ 12.5%) -->
-        <p class="modal-gender"></p>
-    
-        <!-- Types -->
-        <h4 class="modal-section-label">Types</h4>
-        <div class="modal-types"></div>
-    
-        <!-- Weaknesses -->
-        <h4 class="modal-section-label">Weak To</h4>
-        <div class="modal-weaknesses"></div>
-    
-        <!-- Base Stats -->
-        <h4 class="modal-section-label">Base Stats</h4>
-        <div class="modal-stats"></div>
-    
-        <!-- Evolutions -->
-        <h4 class="modal-section-label">Evolution</h4>
-        <div class="modal-evolution"></div>
-      </div>
+        <section class="featured-pokemon" id="featured-pokemon">
+          <div class="container">
+            <h3>Pokémon</h3>
+            <div class="pokemon-grid"></div>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <div class="container">
+            <p>
+              &copy; 2025 Pokédex Fan Project. Data from
+              <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.
+            </p>
+          </div>
+        </footer>
+
+        <div id="pokemon-modal" class="modal hidden">
+          <div class="modal-content">
+            <!-- Pokémon Name -->
+            <h2 class="modal-title"></h2>
+
+            <!-- Image -->
+            <div class="modal-image"></div>
+
+            <!-- Description (Flavor text) -->
+            <p class="modal-description"></p>
+
+            <!-- Category (e.g., Flame Pokémon) -->
+            <p class="modal-category"></p>
+
+            <!-- Gender Ratio (♂ 87.5%, ♀ 12.5%) -->
+            <p class="modal-gender"></p>
+
+            <!-- Types -->
+            <h4 class="modal-section-label">Types</h4>
+            <div class="modal-types"></div>
+
+            <!-- Weaknesses -->
+            <h4 class="modal-section-label">Weak To</h4>
+            <div class="modal-weaknesses"></div>
+
+            <!-- Base Stats -->
+            <h4 class="modal-section-label">Base Stats</h4>
+            <div class="modal-stats"></div>
+
+            <!-- Evolutions -->
+            <h4 class="modal-section-label">Evolution</h4>
+            <div class="modal-evolution"></div>
+          </div>
+        </div>
+      </main>
     </div>
-    
-  </main>
-  </div>
-  <button id="backToTop" class="back-to-top" aria-label="Scroll to top">↑</button>
-  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/scroll.js" defer></script>
-</body>
+    <button id="backToTop" class="back-to-top" aria-label="Scroll to top">
+      ↑
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
+    <script src="dist/bundle.min.js"></script>
+  </body>
 </html>

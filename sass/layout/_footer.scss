@@ -1,15 +1,15 @@
-@use '../theme/colors' as theme;
-@use '../utils/mixins' as mixins;
+@use "../theme/colors" as theme;
+@use "../utils/mixins" as mixins;
 
 .site-footer {
-  background-color: theme.$pokemon-yellow; 
-  color: theme.$pokemon-blue; 
-  padding: 20px 0; 
-  border-top: 4px solid theme.$pokemon-blue; 
+  background-color: theme.$pokemon-yellow;
+  color: theme.$pokemon-blue;
+  padding: 20px 0;
+  border-top: 4px solid theme.$pokemon-blue;
 
   .container {
-    @include mixins.container; 
-    text-align: center; 
+    @include mixins.container;
+    text-align: center;
   }
 
   p {
@@ -17,13 +17,13 @@
     margin: 0;
 
     a {
-      color: theme.$pokemon-blue; 
+      color: theme.$pokemon-blue;
       font-weight: bold;
       text-decoration: none;
       transition: color 0.3s ease;
 
       &:hover {
-        color: theme.$pokemon-red; 
+        color: theme.$pokemon-red;
       }
     }
   }

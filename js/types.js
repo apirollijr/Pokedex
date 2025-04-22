@@ -1,45 +1,51 @@
 // Main function to load Pokémon types from the API and render them as cards
-function loadAndRenderTypes(containerSelector = '.type-grid') {
-  console.log('✅ loadAndRenderTypes is running...');
+function loadAndRenderTypes(containerSelector = ".type-grid") {
+  console.log("✅ loadAndRenderTypes is running...");
 
   // Select the container element where the type cards will be displayed
   const container = document.querySelector(containerSelector);
   if (!container) return;
 
   // Fetch the list of all Pokémon types from the API
-  fetch('https://pokeapi.co/api/v2/type')
-    .then(response => response.json())
-    .then(data => {
+  fetch("https://pokeapi.co/api/v2/type")
+    .then((response) => response.json())
+    .then((data) => {
       // Filter out non-standard types like 'shadow' and 'unknown'
-      const standardTypes = data.results.filter(t =>
-        !['shadow', 'unknown'].includes(t.name)
+      const standardTypes = data.results.filter(
+        (t) => !["shadow", "unknown"].includes(t.name)
       );
 
       // Fetch detailed type data (e.g., damage relations and example Pokémon)
       return Promise.all(
-        standardTypes.map(type =>
+        standardTypes.map((type) =>
           fetch(type.url)
-            .then(res => res.json())
-            .then(detail => ({
+            .then((res) => res.json())
+            .then((detail) => ({
               name: type.name,
               // List of types this one is strong against
-              damageTo: detail.damage_relations.double_damage_to.map(t => t.name),
+              damageTo: detail.damage_relations.double_damage_to.map(
+                (t) => t.name
+              ),
               // List of types this one is weak against
-              damageFrom: detail.damage_relations.double_damage_from.map(t => t.name),
+              damageFrom: detail.damage_relations.double_damage_from.map(
+                (t) => t.name
+              ),
               // Get up to 3 example Pokémon for this type
-              examples: (detail.pokemon || []).slice(0, 3).map(p => capitalize(p.pokemon.name)),
+              examples: (detail.pokemon || [])
+                .slice(0, 3)
+                .map((p) => capitalize(p.pokemon.name)),
               // Get the emoji icon associated with the type
-              icon: getTypeIcon(type.name)
+              icon: getTypeIcon(type.name),
             }))
         )
       );
     })
-    .then(types => {
-      console.log('📦 Types received:', types);
+    .then((types) => {
+      console.log("📦 Types received:", types);
 
       // Create and append a card for each type
-      types.forEach(type => {
-        const card = document.createElement('div');
+      types.forEach((type) => {
+        const card = document.createElement("div");
         card.className = `type-card ${type.name}`;
 
         // Set the inner HTML content of the card
@@ -49,14 +55,17 @@ function loadAndRenderTypes(containerSelector = '.type-grid') {
             <h3>${capitalize(type.name)}</h3>
           </div>
           <div class="damage">
-            <p><strong>Strong against:</strong> ${type.damageTo.join(', ') || '—'}</p>
-            <p><strong>Weak against:</strong> ${type.damageFrom.join(', ') || '—'}</p>
+            <p><strong>Strong against:</strong> ${
+              type.damageTo.join(", ") || "—"
+            }</p>
+            <p><strong>Weak against:</strong> ${
+              type.damageFrom.join(", ") || "—"
+            }</p>
           </div>
           <div class="examples">
-            <p><strong>Examples:</strong> ${type.examples.join(', ')}</p>
+            <p><strong>Examples:</strong> ${type.examples.join(", ")}</p>
           </div>
         `;
-
 
         // Append the card to the container
         container.appendChild(card);
@@ -69,15 +78,28 @@ function loadAndRenderTypes(containerSelector = '.type-grid') {
 // Utility function: Returns an emoji icon based on the Pokémon type
 function getTypeIcon(type) {
   const icons = {
-    normal: '⚪', fire: '🔥', water: '💧', grass: '🌿',
-    electric: '⚡', ice: '❄️', fighting: '🥊', poison: '☠️',
-    ground: '🌍', flying: '🕊️', psychic: '🔮', bug: '🐛',
-    rock: '🪨', ghost: '👻', dragon: '🐉', dark: '🌑',
-    steel: '⚙️', fairy: '✨'
+    normal: "⚪",
+    fire: "🔥",
+    water: "💧",
+    grass: "🌿",
+    electric: "⚡",
+    ice: "❄️",
+    fighting: "🥊",
+    poison: "☠️",
+    ground: "🌍",
+    flying: "🕊️",
+    psychic: "🔮",
+    bug: "🐛",
+    rock: "🪨",
+    ghost: "👻",
+    dragon: "🐉",
+    dark: "🌑",
+    steel: "⚙️",
+    fairy: "✨",
   };
 
   // Return the corresponding emoji or a question mark if type is unknown
-  return icons[type] || '❓';
+  return icons[type] || "❓";
 }
 
 // Utility function: Capitalizes the first letter of a string
@@ -86,7 +108,6 @@ function capitalize(str) {
 }
 
 // Call the function once the DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   loadAndRenderTypes();
 });
-

@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon Types</title>
-  <link rel="stylesheet" href="css/style.min.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo"><a href="index.html">Pokédex</a></h1>
-      <button class="mobile-menu-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="types.html">Types</a></li>
-          <li><a href="mechanics.html">Mechanics</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Types</title>
+    <link rel="stylesheet" href="dist/style.min.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo"><a href="index.html">Pokédex</a></h1>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+          &#9776;
+        </button>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="types.html">Types</a></li>
+            <li><a href="mechanics.html">Mechanics</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <main class="types-main">
-    <div class="container">
-      <h2>Explore Pokémon Types</h2>
-      <div class="type-grid"></div>
-    </div>
-  </main>
+    <main class="types-main">
+      <div class="container">
+        <h2>Explore Pokémon Types</h2>
+        <div class="type-grid"></div>
+      </div>
+    </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Pokédex Fan Project. Data from <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.</p>
-    </div>
-  </footer>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Pokédex Fan Project. Data from
+          <a href="https://pokeapi.co" target="_blank">PokéAPI</a>.
+        </p>
+      </div>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/types.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
+    <script src="dist/bundle.min.js"></script>
+  </body>
 </html>

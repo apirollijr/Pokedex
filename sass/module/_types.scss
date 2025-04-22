@@ -34,24 +34,60 @@
     background: #999;
 
     // Type-specific background classes
-    &.normal    { background: #a8a878; }
-    &.fire      { background: #f08030; }
-    &.water     { background: #6890f0; }
-    &.electric  { background: #f8d030; }
-    &.grass     { background: #78c850; }
-    &.ice       { background: #98d8d8; }
-    &.fighting  { background: #c03028; }
-    &.poison    { background: #a040a0; }
-    &.ground    { background: #e0c068; }
-    &.flying    { background: #a890f0; }
-    &.psychic   { background: #f85888; }
-    &.bug       { background: #a8b820; }
-    &.rock      { background: #b8a038; }
-    &.ghost     { background: #705898; }
-    &.dragon    { background: #7038f8; }
-    &.dark      { background: #705848; }
-    &.steel     { background: #b8b8d0; }
-    &.fairy     { background: #ee99ac; }
+    &.normal {
+      background: #a8a878;
+    }
+    &.fire {
+      background: #f08030;
+    }
+    &.water {
+      background: #6890f0;
+    }
+    &.electric {
+      background: #f8d030;
+    }
+    &.grass {
+      background: #78c850;
+    }
+    &.ice {
+      background: #98d8d8;
+    }
+    &.fighting {
+      background: #c03028;
+    }
+    &.poison {
+      background: #a040a0;
+    }
+    &.ground {
+      background: #e0c068;
+    }
+    &.flying {
+      background: #a890f0;
+    }
+    &.psychic {
+      background: #f85888;
+    }
+    &.bug {
+      background: #a8b820;
+    }
+    &.rock {
+      background: #b8a038;
+    }
+    &.ghost {
+      background: #705898;
+    }
+    &.dragon {
+      background: #7038f8;
+    }
+    &.dark {
+      background: #705848;
+    }
+    &.steel {
+      background: #b8b8d0;
+    }
+    &.fairy {
+      background: #ee99ac;
+    }
 
     .type-header {
       display: flex;

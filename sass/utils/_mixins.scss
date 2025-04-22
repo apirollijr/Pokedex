@@ -1,8 +1,8 @@
-@use 'variables' as vars;
+@use "variables" as vars;
 
 @mixin container {
   width: 100%;
-  max-width: vars.$container-max-width; 
+  max-width: vars.$container-max-width;
   margin: 0 auto;
   padding-left: vars.$container-padding;
   padding-right: vars.$container-padding;

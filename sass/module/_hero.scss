@@ -1,8 +1,12 @@
-@use '../utils/variables' as vars;
-@use '../theme/colors' as theme;
+@use "../utils/variables" as vars;
+@use "../theme/colors" as theme;
 
 .hero {
-  background: linear-gradient(135deg, theme.$pokemon-yellow, theme.$pokemon-blue);
+  background: linear-gradient(
+    135deg,
+    theme.$pokemon-yellow,
+    theme.$pokemon-blue
+  );
   color: theme.$text-light;
   text-align: center;
   padding: 50px 20px;

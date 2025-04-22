@@ -4,10 +4,12 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "clean-css-cli": "^5.6.3",
     "live-server": "^1.2.2",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
-    "sass": "^1.86.0"
+    "sass": "^1.86.0",
+    "terser": "^5.39.0"
   },
   "scripts": {
     "sass": "sass --load-path=node_modules sass/main.scss css/style.min.css --style=compressed",
