@@ -3,8 +3,16 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
+    "cssnano": "^7.0.6",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
     "live-server": "^1.2.2",
-    "sass": "^1.86.0"
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "prettier": "^3.5.3",
+    "sass": "^1.86.0",
+    "terser": "^5.39.0"
   },
   "scripts": {
     "sass": "sass --load-path=node_modules sass/main.scss css/style.css",

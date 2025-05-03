@@ -1,7 +1,7 @@
 function setupSearch() {
   // Get the input element where the user will type their search query
   const searchInput = document.getElementById('searchInput');
-  
+
   // Exit the function early if the input element is not found
   if (!searchInput) return;
 
@@ -21,9 +21,7 @@ function setupSearch() {
     });
 
     // Load details for each filtered Pokémon (returns an array of Promises)
-    const detailPromises = filtered.map(pokemon =>
-      pokemonRepository.loadDetails(pokemon)
-    );
+    const detailPromises = filtered.map((pokemon) => pokemonRepository.loadDetails(pokemon));
 
     // Wait until all detail data is loaded, then display the filtered Pokémon
     Promise.all(detailPromises).then(() => {

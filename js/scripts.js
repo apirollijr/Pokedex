@@ -28,29 +28,33 @@ const pokemonRepository = (function () {
   function loadList() {
     if (allPokemonList.length > 0) return Promise.resolve();
     return fetch(`${apiBase}?limit=1500`)
-      .then(res => res.json())
-      .then(json => json.results.forEach(item => add({ name: item.name, detailsUrl: item.url })));
+      .then((res) => res.json())
+      .then((json) =>
+        json.results.forEach((item) => add({ name: item.name, detailsUrl: item.url })),
+      );
   }
 
   function loadDetails(pokemon) {
     if (pokemon.types) return Promise.resolve();
 
     return fetch(pokemon.detailsUrl)
-      .then(res => res.json())
-      .then(details => {
+      .then((res) => res.json())
+      .then((details) => {
         pokemon.height = `${(details.height * 0.328084).toFixed(1)} ft`;
         pokemon.weight = `${(details.weight * 0.220462).toFixed(1)} lbs`;
-        pokemon.types = details.types.map(t => t.type.name);
-        pokemon.abilities = details.abilities.map(a => a.ability.name);
-        pokemon.baseStats = details.stats.map(s => ({ name: s.stat.name, value: s.base_stat }));
+        pokemon.types = details.types.map((t) => t.type.name);
+        pokemon.abilities = details.abilities.map((a) => a.ability.name);
+        pokemon.baseStats = details.stats.map((s) => ({ name: s.stat.name, value: s.base_stat }));
         pokemon.id = details.id;
         return fetch(details.species.url);
       })
-      .then(res => res.json())
-      .then(species => {
-        const flavor = species.flavor_text_entries.find(entry => entry.language.name === 'en');
-        const category = species.genera.find(g => g.language.name === 'en');
-        pokemon.description = flavor ? flavor.flavor_text.replace(/\f/g, ' ') : 'No description available.';
+      .then((res) => res.json())
+      .then((species) => {
+        const flavor = species.flavor_text_entries.find((entry) => entry.language.name === 'en');
+        const category = species.genera.find((g) => g.language.name === 'en');
+        pokemon.description = flavor
+          ? flavor.flavor_text.replace(/\f/g, ' ')
+          : 'No description available.';
         pokemon.category = category ? category.genus : '';
         pokemon.genderRate = species.gender_rate;
         pokemon.evolutionChainUrl = species.evolution_chain.url;
@@ -60,7 +64,7 @@ const pokemonRepository = (function () {
   function loadNextChunk() {
     const chunk = allPokemonList.slice(detailLoaded, detailLoaded + chunkSize);
     detailLoaded += chunk.length;
-    return Promise.all(chunk.map(pokemon => loadDetails(pokemon))).then(() => chunk);
+    return Promise.all(chunk.map((pokemon) => loadDetails(pokemon))).then(() => chunk);
   }
 
   return { getAll, loadList, loadDetails, loadNextChunk, getOfficialArtworkUrl };
@@ -76,7 +80,7 @@ function createTextLine(label, value) {
 function createStatBars(stats) {
   const container = document.createElement('div');
   container.classList.add('stat-bars');
-  stats.forEach(stat => {
+  stats.forEach((stat) => {
     const statBlock = document.createElement('div');
     statBlock.classList.add('stat');
 
@@ -108,8 +112,8 @@ function getGenderIcons(rate) {
 
 function loadEvolutionChain(url) {
   return fetch(url)
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       const chain = [];
       let evo = data.chain;
       while (evo) {
@@ -126,7 +130,7 @@ function displayPokemon(pokemonList, clear = false) {
   if (!grid) return;
   if (clear) grid.innerHTML = '';
 
-  pokemonList.forEach(pokemon => {
+  pokemonList.forEach((pokemon) => {
     const card = document.createElement('div');
     card.classList.add('pokemon-card');
 
@@ -193,83 +197,83 @@ function showDetails(pokemon) {
 
   // Types
   typesBox.innerHTML = '';
-  pokemon.types.forEach(type => {
-  const badge = document.createElement('div');
-  badge.classList.add('type-badge', `type-${type.toLowerCase()}`);
-  badge.textContent = type.charAt(0).toUpperCase() + type.slice(1);
-  typesBox.appendChild(badge);
-});
+  pokemon.types.forEach((type) => {
+    const badge = document.createElement('div');
+    badge.classList.add('type-badge', `type-${type.toLowerCase()}`);
+    badge.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+    typesBox.appendChild(badge);
+  });
 
   // Weaknesses
   weaknessesBox.innerHTML = '';
   fetch(`https://pokeapi.co/api/v2/type/${pokemon.types[0]}`)
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       const weakTo = data.damage_relations.double_damage_from;
-      weakTo.forEach(type => {
+      weakTo.forEach((type) => {
         const badge = document.createElement('div');
         badge.classList.add('type-badge', `type-${type.name}`);
         badge.textContent = type.name.charAt(0).toUpperCase() + type.name.slice(1);
         weaknessesBox.appendChild(badge);
       });
     });
-  
+
   // Stats chart
   stats.appendChild(document.createElement('hr'));
   stats.appendChild(createStatBars(pokemon.baseStats));
 
-// === Evolutions ===
-evolutionBox.innerHTML = '';
+  // === Evolutions ===
+  evolutionBox.innerHTML = '';
 
-loadEvolutionChain(pokemon.evolutionChainUrl).then(chain => {
-  chain.forEach(p => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${p.name}`)
-      .then(res => res.json())
-      .then(data => {
-        const evoBox = document.createElement('div');
-        evoBox.classList.add('evolution-box');
-        evoBox.style.cursor = 'pointer';
+  loadEvolutionChain(pokemon.evolutionChainUrl).then((chain) => {
+    chain.forEach((p) => {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${p.name}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const evoBox = document.createElement('div');
+          evoBox.classList.add('evolution-box');
+          evoBox.style.cursor = 'pointer';
 
-        const img = document.createElement('img');
-        img.src = data.sprites.other['official-artwork'].front_default;
-        img.alt = data.name;
+          const img = document.createElement('img');
+          img.src = data.sprites.other['official-artwork'].front_default;
+          img.alt = data.name;
 
-        const label = document.createElement('span');
-        label.textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+          const label = document.createElement('span');
+          label.textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
 
-        evoBox.appendChild(img);
-        evoBox.appendChild(label);
-        evolutionBox.appendChild(evoBox);
+          evoBox.appendChild(img);
+          evoBox.appendChild(label);
+          evolutionBox.appendChild(evoBox);
 
-        // ✅ Clean single click handler with fade
-        evoBox.addEventListener('click', () => {
-          const modalContent = document.querySelector('.modal-content');
+          // ✅ Clean single click handler with fade
+          evoBox.addEventListener('click', () => {
+            const modalContent = document.querySelector('.modal-content');
 
-          // Fade out
-          modalContent.classList.remove('fade-in');
-          modalContent.classList.add('fade-out');
+            // Fade out
+            modalContent.classList.remove('fade-in');
+            modalContent.classList.add('fade-out');
 
-          setTimeout(() => {
-            pokemonRepository.loadDetails({
-              name: data.name,
-              detailsUrl: `https://pokeapi.co/api/v2/pokemon/${data.name}/`
-            }).then(() => {
-              const selectedPokemon = pokemonRepository.getAll().find(p => p.name === data.name);
-              if (selectedPokemon) showDetails(selectedPokemon);
+            setTimeout(() => {
+              pokemonRepository
+                .loadDetails({
+                  name: data.name,
+                  detailsUrl: `https://pokeapi.co/api/v2/pokemon/${data.name}/`,
+                })
+                .then(() => {
+                  const selectedPokemon = pokemonRepository
+                    .getAll()
+                    .find((p) => p.name === data.name);
+                  if (selectedPokemon) showDetails(selectedPokemon);
 
-              // Fade in
-              modalContent.classList.remove('fade-out');
-              modalContent.classList.add('fade-in');
-            });
-          }, 300); // Match CSS transition
+                  // Fade in
+                  modalContent.classList.remove('fade-out');
+                  modalContent.classList.add('fade-in');
+                });
+            }, 300); // Match CSS transition
+          });
         });
-      });
+    });
   });
-});
-
-
-
-
 
   modal.classList.remove('hidden');
 }
@@ -277,7 +281,7 @@ loadEvolutionChain(pokemon.evolutionChainUrl).then(chain => {
 // === Filters & Init ===
 function filterPokemon(type) {
   const all = pokemonRepository.getAll();
-  const filtered = type === 'all' ? all : all.filter(p => p.types && p.types.includes(type));
+  const filtered = type === 'all' ? all : all.filter((p) => p.types && p.types.includes(type));
   displayPokemon(filtered, true);
 }
 
@@ -318,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nearBottom) loadNext();
       });
 
-      typeButtons.forEach(btn => {
+      typeButtons.forEach((btn) => {
         btn.addEventListener('click', () => {
           const type = btn.getAttribute('data-type');
           filterPokemon(type);
@@ -330,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadNext() {
     if (isLoading) return;
     isLoading = true;
-    pokemonRepository.loadNextChunk().then(chunk => {
+    pokemonRepository.loadNextChunk().then((chunk) => {
       displayPokemon(chunk);
       isLoading = false;
     });
